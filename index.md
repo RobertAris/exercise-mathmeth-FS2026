@@ -1,16 +1,13 @@
 ---
 layout: default
-title: Mathematical Methods - Exercise Class
+title: Mathematical Methods - Exercise Class FS2026
 ---
 
-# Mathematical Methods for Physicists (2026)
-**Exercise Class Materials & Resources**
-
-Welcome! I am your Teaching Assistant for this semester. This site will serve as the central hub for all exercise sheets, solution sketches, and supplementary notes.
+**Hey, I am your TA for this semester! This site is the central spot for all our exercise sheets, solution sketches, and any extra notes or random helpful stuff.**
 
 ---
 
-## 📢 Announcements
+## Important Info
 * **Feb 8, 2026:** Website is live! Exercise Sheet 1 has been uploaded.
 * **Submission:** Please upload your scanned solutions to the university portal by **Friday at 12:00 PM**.
 
