@@ -17,7 +17,7 @@ title: Mathematical Methods - Exercise Class FS2026
 
 | Week | Blank notes | Filled notes | Presentations |
 | :--- | :---: | :---: | :---: |
-| **01** | [Download EC E4 PDF](./EC_E4_Robert_Jahnke.pdf) | [✅ View](solutions/sol01.pdf) | - |
+| **01** | [Download EC E4 PDF](./notes_blank/EC_E4_Robert_Jahnke.pdf) | [✅ View](solutions/sol01.pdf) | - |
 | **02** | [📄 Download](sheets/ws02.pdf) | ⏳ Pending | - |
 | **03** | - | - | - |
 | **04** | - | - | - |
