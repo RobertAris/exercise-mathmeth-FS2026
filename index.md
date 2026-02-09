@@ -3,42 +3,40 @@ layout: default
 title: Mathematical Methods - Exercise Class FS2026
 ---
 
-**Hey, I am your TA for this semester! This site is the central spot for all our exercise sheets, solution sketches, and any extra notes or random helpful stuff.**
+**Hey, I am your TA for this semester! This site is the central spot for all the exercise notes, presentations, and any extra notes or random helpful stuff.**
 
 ---
 
 ## Important Info
-* **Feb 8, 2026:** Website is live! Exercise Sheet 1 has been uploaded.
-* **Submission:** Please upload your scanned solutions to the university portal by **Friday at 12:00 PM**.
+* **Exersice classes:** Mondays 08:15-10:00 at CAB G56 and Tuesdays 10:15-12:00 at HG E33.1
+* **Submission:** Please upload your solutions to moodle by ...
 
 ---
 
-## 📅 Course Schedule
+## Course Schedule
 
-| Week | Topic | Problem Set | Solution |
-| :--- | :--- | :---: | :---: |
-| **01** | Linear Vector Spaces & Basis | [📄 Download](sheets/ws01.pdf) | [✅ View](solutions/sol01.pdf) |
-| **02** | Orthogonal Polynomials | [📄 Download](sheets/ws02.pdf) | ⏳ Pending |
-| **03** | Fourier Series & Transforms | - | - |
-| **04** | Green's Functions | - | - |
+| Week | Blank notes | Filled notes | Presentations |
+| :--- | :---: | :---: | :---: |
+| **01** | [📄 Download](sheets/ws01.pdf) | [✅ View](solutions/sol01.pdf) | - |
+| **02** | [📄 Download](sheets/ws02.pdf) | ⏳ Pending | - |
+| **03** | - | - | - |
+| **04** | - | - | - |
+| **05** | - | - | - |
+| **06** | - | - | - |
+| **07** | - | - | - |
+| **08** | - | - | - |
+| **09** | - | - | - |
+| **10** | - | - | - |
+| **11** | - | - | - |
+| **12** | - | - | - |
+| **13** | - | - | - |
+| **14** | - | - | - |
 
 ---
 
-## 💡 Quick Reference
-As we move through the course, keep these fundamental identities in mind:
-
-**The Dirac Delta Representation:**
-$$\delta(x-x') = \sum_{n} \psi_n(x) \psi_n^*(x')$$
-
-**Cauchy's Integral Formula:**
-$$f(a) = \frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{z-a} dz$$
-
----
-
-## 🏢 Office Hours & Contact
-* **TA:** Your Name
-* **Time:** Wednesdays, 14:00 – 15:30
-* **Room:** Theoretical Physics Building, Room 204
+## 🏢 Contact
+* **TA:** Robert Jahnke
+* **Phone Number:** 
 * **Email:** [your.email@university.edu](mailto:your.email@university.edu)
 
 ---
