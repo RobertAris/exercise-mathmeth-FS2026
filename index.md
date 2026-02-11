@@ -17,7 +17,7 @@ title: Mathematical Methods - Exercise Class FS2026
 
 | Week | Blank notes | Filled notes | Presentations |
 | :--- | :---: | :---: | :---: |
-| **01** | [Download](./notes_blank/EC_E4_Robert_Jahnke.pdf) | [✅ View](solutions/sol01.pdf) | - |
+| **01** | [Download](./notes_blank/EC_E4_Robert_Jahnke.pdf) | [✅ View](solutions/sol01.pdf) | [WS01 ansehen](./presentations/industrial_view_on_space_mission.pptx)  |
 | **02** | [📄 Download](sheets/ws02.pdf) | ⏳ Pending | - |
 | **03** | - | - | - |
 | **04** | - | - | - |
