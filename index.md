@@ -8,8 +8,8 @@ title: Mathematical Methods - Exercise Class FS2026
 ---
 
 ## Important Info
-* **Exersice classes:** Mondays 08:15-10:00 at CAB G56 and Tuesdays 10:15-12:00 at HG E33.1
-* **Submission:** Please upload your solutions to moodle by ...
+* **Exercise classes:** Mondays 08:15–10:00 at CAB G56 and Tuesdays 10:15–12:00 at HG E33.1
+* **Submission:** Please upload your solutions to Moodle by ...
 
 ---
 
@@ -17,7 +17,7 @@ title: Mathematical Methods - Exercise Class FS2026
 
 | Week | Blank notes | Filled notes | Presentations |
 | :--- | :---: | :---: | :---: |
-| **01** | [Download](./notes_blank/EC_E4_Robert_Jahnke.pdf) | [✅ View](solutions/sol01.pdf) | [WS01 ansehen](./presentations/industrial_view_on_space_mission.pptx)  |
+| **01** | [Download](./notes_blank/EC_E4_Robert_Jahnke.pdf) | [✅ View](solutions/sol01.pdf) | [WS01 ansehen](./presentations/industrial_view_on_space_mission.pptx) |
 | **02** | [📄 Download](sheets/ws02.pdf) | ⏳ Pending | - |
 | **03** | - | - | - |
 | **04** | - | - | - |
@@ -34,13 +34,8 @@ title: Mathematical Methods - Exercise Class FS2026
 
 ---
 
-## 🏢 Contact
+## Contact
 * **TA:** Robert Jahnke
 * **Polybox:** 
 * **Phone Number:** 
 * **Email:** [your.email@university.edu](mailto:your.email@university.edu)
-
----
-
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
