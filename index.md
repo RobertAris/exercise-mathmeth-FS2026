@@ -3,7 +3,7 @@ layout: default
 title: Mathematical Methods - Exercise Class FS2026
 ---
 
-**Hey, I am your TA for this semester :) This site is the central spot for all the exercise notes, presentations, and any extra notes or random helpful stuff.**
+**Hey, I am your Koma TA for this semester :) This site is the central spot for all the exercise notes, presentations, and any extra notes or random helpful stuff.**
 
 ---
 
@@ -15,22 +15,22 @@ title: Mathematical Methods - Exercise Class FS2026
 
 ## Course Schedule
 
-| Week | Blank notes | Filled notes | Presentations |
-| :--- | :---: | :---: | :---: |
-| **01** | - | - | - |
-| **02** | - | - | - |
-| **03** | - | - | - |
-| **04** | - | - | - |
-| **05** | - | - | - |
-| **06** | - | - | - |
-| **07** | - | - | - |
-| **08** | - | - | - |
-| **09** | - | - | - |
-| **10** | - | - | - |
-| **11** | - | - | - |
-| **12** | - | - | - |
-| **13** | - | - | - |
-| **14** | - | - | - |
+| Week | Notes | Presentations |
+| :--- | :---: | :---: |
+| **01** | - | - |
+| **02** | - | - |
+| **03** | - | - |
+| **04** | - | - |
+| **05** | - | - |
+| **06** | - | - |
+| **07** | - | - |
+| **08** | - | - |
+| **09** | - | - |
+| **10** | - | - |
+| **11** | - | - |
+| **12** | - | - |
+| **13** | - | - |
+| **14** | - | - |
 
 ---
 
