@@ -3,7 +3,7 @@ layout: default
 title: Mathematical Methods - Exercise Class FS2026
 ---
 
-**Hey, I am your TA for this semester! This site is the central spot for all the exercise notes, presentations, and any extra notes or random helpful stuff.**
+**Hey, I am your TA for this semester:) This site is the central spot for all the exercise notes, presentations, and any extra notes or random helpful stuff.**
 
 ---
 
@@ -17,8 +17,8 @@ title: Mathematical Methods - Exercise Class FS2026
 
 | Week | Blank notes | Filled notes | Presentations |
 | :--- | :---: | :---: | :---: |
-| **01** | [Download](./notes_blank/EC_E4_Robert_Jahnke.pdf) | [✅ View](solutions/sol01.pdf) | [WS01 ansehen](./presentations/industrial_view_on_space_mission.pptx) |
-| **02** | [📄 Download](sheets/ws02.pdf) | ⏳ Pending | - |
+| **01** | - | - | - |
+| **02** | - | - | - |
 | **03** | - | - | - |
 | **04** | - | - | - |
 | **05** | - | - | - |
@@ -37,5 +37,5 @@ title: Mathematical Methods - Exercise Class FS2026
 ## Contact
 * **TA:** Robert Jahnke
 * **Polybox:** 
-* **Phone Number:** 
-* **Email:** [your.email@university.edu](mailto:your.email@university.edu)
+* **Phone Number:** +41 78 337 66 37
+* **Email:** [rjahnke@student.ethz.ch](mailto:rjahnke@student.ethz.ch)
