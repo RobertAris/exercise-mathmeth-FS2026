@@ -36,7 +36,7 @@ title: Mathematical Methods - Exercise Class FS2026
 
 ## Contact
 * **TA:** Robert Jahnke
-* **Polybox:** [Link zur Polybox](https://polybox.ethz.ch/index.php/s/8b4FCftQWjBdmtb)
+* **Polybox:** [Link zur Polybox](https://polybox.ethz.ch/index.php/s/E2M52Mp94XfjdE3)
 * **Phone Number:** +41 78 337 66 37
 * **WhatsApp:** [WhatsApp-Gruppe beitreten](https://chat.whatsapp.com/G7y8G84fRNh91r5qt2DvDs?mode=gi_t)
 * **Email:** [rjahnke@student.ethz.ch](mailto:rjahnke@student.ethz.ch)
