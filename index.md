@@ -17,7 +17,7 @@ title: Mathematical Methods - Exercise Class FS2026
 
 | Week | Notes | Presentations |
 | :--- | :---: | :---: |
-| **01** | - | - |
+| **01** | [Notes](notes/Woche1.pdf) | [Presentation](presentations/Präsentation1.pptx) |
 | **02** | - | - |
 | **03** | - | - |
 | **04** | - | - |
