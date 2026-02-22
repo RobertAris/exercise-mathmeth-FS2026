@@ -17,8 +17,8 @@ title: Mathematical Methods - Exercise Class FS2026
 
 | Week | Notes | Presentations |
 | :--- | :---: | :---: |
-| **01** | [Notes](notes/Woche1.pdf) | [Presentation](presentations/Präsentation1.pptx) |
-| **02** | - | - |
+| **01** | [Notes1](notes/Woche1.pdf) | [Presentation](presentations/Präsentation1.pptx) |
+| **02** | [Notes2](notes/Woche2.pdf) | - |
 | **03** | - | - |
 | **04** | - | - |
 | **05** | - | - |
@@ -41,7 +41,7 @@ Feel free to write down any Koma questions (and answers) here! Questions and ans
 
 ---
 
-## Contact/links
+## Contact/links: Feel free to reach out 
 * **TA:** Robert Jahnke
 * **Polybox:** [Link zur Polybox](https://polybox.ethz.ch/index.php/s/E2M52Mp94XfjdE3)
 * **Phone Number:** +41 78 337 66 37
