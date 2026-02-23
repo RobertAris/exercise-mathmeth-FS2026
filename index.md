@@ -14,23 +14,23 @@ title: Mathematical Methods - Exercise Class FS2026
 ---
 
 ## Course Schedule
-
-| Week | Notes | Presentations |
-| :--- | :---: | :---: |
-| **01** | [Notes1](notes/Woche1.pdf) | [Presentation](presentations/Präsentation1.pptx) |
-| **02** | [Notes2](notes/Woche2.pdf) | - |
-| **03** | - | - |
-| **04** | - | - |
-| **05** | - | - |
-| **06** | - | - |
-| **07** | - | - |
-| **08** | - | - |
-| **09** | - | - |
-| **10** | - | - |
-| **11** | - | - |
-| **12** | - | - |
-| **13** | - | - |
-| **14** | - | - |
+ 
+| Week | Notes | Presentations | Kahoot |
+| :--- | :---: | :---: | :---: |
+| **01** | [Notes1](notes/Woche1.pdf) | [Presentatio1](presentations/Präsentation1.pptx) | [Kahoot1](https://create.kahoot.it/share/erste-woche/6bfa8bd6-de15-4444-91dc-f52a755e843a) |
+| **02** | [Notes2](notes/Woche2.pdf) | - | - |
+| **03** | - | - | - |
+| **04** | - | - | - |
+| **05** | - | - | - |
+| **06** | - | - | - |
+| **07** | - | - | - |
+| **08** | - | - | - |
+| **09** | - | - | - |
+| **10** | - | - | - |
+| **11** | - | - | - |
+| **12** | - | - | - |
+| **13** | - | - | - |
+| **14** | - | - | - |
 
 ---
 
