@@ -19,7 +19,7 @@ title: Mathematical Methods - Exercise Class FS2026
 | :--- | :---: | :---: | :---: |
 | **01** | [Notes](notes/Woche1.pdf) | [Presentation](presentations/Präsentation1.pptx) | [Kahoot](https://create.kahoot.it/share/erste-woche/6bfa8bd6-de15-4444-91dc-f52a755e843a) |
 | **02** | [Notes](notes/Woche2.pdf) | - | [Kahoot](https://create.kahoot.it/share/zweite-woche/d800d4a8-8b9b-494c-93dc-2f92b03e209e) |
-| **03** | - | - | - |
+| **03** | [Notes](notes/Woche3.pdf) | - | - |
 | **04** | - | - | - |
 | **05** | - | - | - |
 | **06** | - | - | - |
