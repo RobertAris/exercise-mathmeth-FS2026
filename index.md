@@ -3,7 +3,7 @@ layout: default
 title: Mathematical Methods - Exercise Class FS2026
 ---
 
-**Hey, I am your Koma TA for this semester :) This site is the central spot for all the exercise notes, presentations, and any extra notes or random helpful stuff.**
+**Hey, I am your Koma TA for this semester :) This site is the central spot for all the exercise notes, kahoots, presentations and any extra notes.**
 
 ---
 
