@@ -28,7 +28,7 @@ title: Mathematical Methods - Exercise Class FS2026
 | **09** | [Notes](notes/Woche9.pdf) | [Kahoot](https://create.kahoot.it/share/neunte-woche/f180fee2-ba57-4001-8931-bc6d848024ef) |  |
 | **10** | [Notes](notes/Woche10.pdf) | [Kahoot](https://create.kahoot.it/share/zehnte-woche/c130fc48-5854-4c0d-8872-be655b5810a7) |  |
 | **11** | [Notes](notes/Woche11.pdf) | [Kahoot](https://create.kahoot.it/share/elfte-woche/f630fe31-a13b-4b44-aa31-bec8545c10d6) |  |
-| **12** | - | - |  |
+| **12** | [Notes](notes/Woche12.pdf) | - |  |
 | **13** | - | - |  |
 | **14** | - | - |  |
 
