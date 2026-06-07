@@ -34,13 +34,6 @@ title: Mathematical Methods - Exercise Class FS2026
 
 ---
 
-## Weekly Questions
-Feel free to write down any Koma questions (and answers) here! Questions and answers are cleaned up at the end of each week. As long as you are not logged into your Google account, your contribution is completely anonymous!
-
-* **[Weekly Questions (Google Docs)](https://docs.google.com/document/d/1_KJpsNTIyrCwqjHOnEzABUdPxWE1KJUzXgZoBc_Wgss/edit?usp=sharing)**
-
----
-
 ## Contact/links: Feel free to reach out 
 * **TA:** Robert Jahnke
 * **Polybox:** [Link zur Polybox](https://polybox.ethz.ch/index.php/s/E2M52Mp94XfjdE3)
