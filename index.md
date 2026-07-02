@@ -13,6 +13,15 @@ title: Mathematical Methods - Exercise Class FS2026
 
 ---
 
+## Additional Material
+
+| Material | Files |
+| :--- | :---: |
+| **Summary** | [Open PDF](Zusammenfassung/zusammenfasssung.pdf) · [Open TeX Source](Zusammenfassung/zusammenfasssung.tex) |
+| **PVK Script** | [Open PVK Script](PVK_script/PVK_Skript.pdf) |
+
+---
+
 ## Course Schedule
  
 | Week | Notes | Kahoot | Presentations |

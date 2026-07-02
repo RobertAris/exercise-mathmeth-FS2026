@@ -94,11 +94,11 @@
 
 \section*{Vorbemerkung}
 \addcontentsline{toc}{section}{Vorbemerkung}
-Dieses Skript basiert auf dem Vorlesungsstoff der Vorlesung Mathematische Methoden. Es besteht keine Garantie für Fehlerfreiheit, der Inhalt ist nicht vollständig und ist für die Prüfung angepasst. Falls euch Fehler auffallen, schreibt gerne eine Email an rjahnke@ethz.ch.
+Dieses Skript basiert auf dem Vorlesungsstoff der Vorlesung Mathematische Methoden. Es besteht keine Garantie für Fehlerfreiheit. Falls euch Fehler auffallen, schreibt gerne eine Email an rjahnke@ethz.ch.
 
 \begin{importantbox}[title=Konventionen]
 Es gilt $\ii^2=-1$, und positiv orientiert bedeutet gegen den Uhrzeigersinn.
-Für die Fourier-Transformation wird die symmetrische Moodle-Konvention verwendet:
+Für die Fourier-Transformation wird die symmetrische Konvention verwendet:
 \[
 \widehat f(\omega)=\frac1{\sqrt{2\pi}}\int_{\R}f(t)\ee^{-\ii\omega t}\dd t.
 \]
@@ -165,13 +165,10 @@ Für $z=x+\ii y\neq0$ kann der Hauptwert direkt berechnet werden durch
 \end{cases}
 \qquad \Arg(z)\in(-\pi,\pi].
 \]
-Der Hauptwert ist eindeutig. Bei Produkten werden Beträge
-multipliziert und Argumente addiert; bei Quotienten werden Beträge dividiert und
-Argumente subtrahiert.
 
 \begin{kochrezeptbox}[title={Polarform, Potenzen und Wurzeln}]
 \begin{enumerate}
-\item Bestimme $r=|z|$ und einen Winkel $\varphi$ im richtigen Quadranten.
+\item Bestimme $r=|z|$ und den Winkel $\varphi$.
 \item Schreibe $z=r\ee^{\ii\varphi}$.
 \item Für $n\in\Z$ gilt $z^n=r^n\ee^{\ii n\varphi}$.
 \item Die $n$ verschiedenen Lösungen von $w^n=z$ sind
@@ -206,7 +203,6 @@ Es gibt vier Lösungen. Sie liegen gleichmäßig verteilt auf dem Kreis mit
 Mittelpunkt $0$ und Radius $(1/2)^{1/4}$.
 \end{beispielbox}
 
-\newpage
 \begin{trainingsbox}
 Berechnen Sie alle Lösungen $z$, die
 \[
@@ -255,26 +251,14 @@ Die Beziehungen zwischen den elementaren Funktionen lauten
 \cos(\ii z)=\cosh z,\qquad
 \sin(\ii z)=\ii\sinh z.
 \]
-Alle vier Funktionen sind ganz. Anders als auf $\R$ sind $\sin z$ und $\cos z$ auf
+Anders als auf $\R$ sind $\sin z$ und $\cos z$ auf
 $\C$ unbeschränkt.
 
-\newpage
 \begin{mcbox}[title=MC-Training: Exponential- und Sinusfunktion]
 Entscheiden Sie für jede Aussage, ob sie wahr oder falsch ist.
 \begin{enumerate}
 \item Seien $z,z'\in\C$. Falls $|z|=|z'|$, so gilt auch
 $|\ee^z|=|\ee^{z'}|$.
-\[
-\square\ \text{Wahr}
-\qquad\qquad
-\square\ \text{Falsch}
-\]
-\item Die Funktion
-\[
-f:\C\to\R,\qquad z\longmapsto|\sin z|
-\]
-ist beschränkt, das heißt, es existiert ein $M\in\R$, sodass
-$|\sin z|\le M$ für alle $z\in\C$ gilt.
 \[
 \square\ \text{Wahr}
 \qquad\qquad
@@ -296,38 +280,6 @@ Er ist auf $\C\setminus(-\infty,0]$ holomorph und erfüllt dort $(\Log z)'=1/z$.
 Auf der Verzweigungslinie ist der Hauptwert nicht stetig. Rechenregeln wie
 $\Log(zw)=\Log z+\Log w$ gelten nur, wenn man die Hauptargumente korrekt addiert und auf $(-\pi,\pi]$ zurückführt.
 
-\begin{beispielbox}[title={Vorgerechnetes Prüfungsbeispiel: Aufgabe 3 (2024) -- Hauptwert des Logarithmus}]
-\textbf{Aufgabe.} Berechnen Sie
-\[
-\Log\!\left(\frac{\ee^3}{\sqrt2}
-+\ii\frac{\ee^3}{\sqrt2}\right).
-\]
-
-\textbf{Lösung.} Die Zahl liegt im ersten Quadranten. Ihr Betrag und ihr
-Hauptargument sind
-\[
-\left|\frac{\ee^3}{\sqrt2}
-+\ii\frac{\ee^3}{\sqrt2}\right|=\ee^3,
-\qquad
-\Arg\!\left(\frac{\ee^3}{\sqrt2}
-+\ii\frac{\ee^3}{\sqrt2}\right)=\frac{\pi}{4}.
-\]
-Also
-\[
-\frac{\ee^3}{\sqrt2}
-+\ii\frac{\ee^3}{\sqrt2}
-=\ee^3\ee^{\ii\pi/4}
-\]
-und damit
-\[
-\Log\!\left(\frac{\ee^3}{\sqrt2}
-+\ii\frac{\ee^3}{\sqrt2}\right)
-=\ln(\ee^3)+\ii\frac{\pi}{4}
-=3+\ii\frac{\pi}{4}.
-\]
-\end{beispielbox}
-
-\newpage
 \begin{trainingsbox}
 Berechnen Sie den Hauptwert
 \[
@@ -459,23 +411,6 @@ $f$ heißt holomorph auf einer offenen Menge $U$, wenn $f$ in jedem Punkt von $U
 komplex differenzierbar ist. Eine auf ganz $\C$ holomorphe Funktion heißt ganz.
 \end{definitionbox}
 
-Komplexe Differenzierbarkeit ist stärker als reelle Differenzierbarkeit
-$\R^2\to\R^2$. Reell differenzierbar in $z_0$ bedeutet: Es gibt eine
-$\R$-lineare Abbildung $A:\C\to\C$ mit
-\[
-f(z_0+h)=f(z_0)+A(h)+o(|h|)\qquad(h\to0).
-\]
-Ist $f=u+\ii v$ und sind die ersten partiellen Ableitungen in einer Umgebung
-stetig, dann ist $f$ reell differenzierbar; $A$ wird durch die Jacobi-Matrix
-\[
-D_{\R}f=
-\begin{pmatrix}
-u_x&u_y\\
-v_x&v_y
-\end{pmatrix}
-\]
-beschrieben. Komplexe Differenzierbarkeit liegt genau dann vor, wenn diese
-$\R$-lineare Abbildung zusätzlich eine Multiplikation mit einer komplexen Zahl ist.
 Schreibe nun
 \[
 f(x+\ii y)=u(x,y)+\ii v(x,y).
@@ -503,7 +438,6 @@ Cauchy--Riemann-Gleichungen dort, dann ist $f$ in dieser Umgebung holomorph.
 \end{enumerate}
 \end{kochrezeptbox}
 
-\newpage
 \begin{beispielbox}[title={Vorgerechnetes Prüfungsbeispiel: Aufgabe 4 (2025) -- Holomorphie prüfen}]
 \textbf{Aufgabe.} Bestimmen Sie, ob die Funktion $f:\C\to\C$ mit
 \[
@@ -549,7 +483,6 @@ ganz $\C$ holomorph. Dies stimmt auch mit der vereinfachten Darstellung
 $f(z)=-\ii z^4$ überein.
 \end{beispielbox}
 
-\newpage
 \begin{trainingsbox}
 Bestimmen Sie, ob die Funktion $f:\C\to\C$ mit
 \[
@@ -571,7 +504,6 @@ Holomorphie.
 \item Eine nichttriviale Abhängigkeit von $\overline z$ ist ein starkes Signal gegen
 Holomorphie.
 \item Cauchy--Riemann in nur einem Punkt zeigt komplexe Differenzierbarkeit in diesem Punkt, nicht aber Holomorphie auf einer Umgebung.
-\item Bei stückweise definierten Funktionen zuerst Stetigkeit an der Naht prüfen.
 \end{itemize}
 \end{pruefungsbox}
 
@@ -589,9 +521,8 @@ Koeffizienten und Konvergenzwert;
 \item eine Fourier-Transformation direkt oder mithilfe des Residuensatzes
 berechnen;
 \item eine Differentialgleichung durch Fourier-Transformation in eine
-algebraische Gleichung überführen und lösen.
+algebraische Gleichung überführen und lösen;
 \end{itemize}
-Dabei wird durchgehend die symmetrische Fourier-Normierung verwendet.
 \end{pruefungsbox}
 
 \subsection{Periodische Funktionen und Grundfrequenz}
@@ -686,7 +617,6 @@ f(t)\sin\!\left(\frac{n\pi t}{L}\right)\dd t.
 \begin{kochrezeptbox}[title=Fourierreihe berechnen]
 \begin{enumerate}
 \item Fundamentalperiode $T=2L$ und damit $\omega_0=\pi/L$ bestimmen.
-\item Periodische Fortsetzung gedanklich zeichnen; Sprünge an den Rändern markieren.
 \item Gerade/ungerade Symmetrie prüfen.
 \item Nur die nicht automatisch verschwindenden Koeffizienten integrieren.
 \item Die Reihe mit korrektem Argument $n\pi t/L$ angeben.
@@ -767,39 +697,6 @@ $f:\R\to\C$ heißt absolut integrierbar, wenn
 \|f\|_1=\int_{-\infty}^{\infty}|f(t)|\dd t<\infty.
 \]
 
-\begin{mcbox}[title=MC-Training: gewöhnliches Integral und Cauchy-Hauptwert]
-Sei $f:\R\to\R$ so, dass
-\[
-\PV\int_{-\infty}^{\infty}f(t)\dd t
-\]
-existiert. Entscheiden Sie jeweils, ob die Zusatzannahme garantiert, dass auch
-das gewöhnliche uneigentliche Integral existiert und
-\[
-\int_{-\infty}^{\infty}f(t)\dd t
-=\PV\int_{-\infty}^{\infty}f(t)\dd t
-\]
-gilt.
-\begin{enumerate}
-\item $f$ ist beschränkt.
-\[
-\square\ \text{Richtig}\qquad\qquad\square\ \text{Falsch}
-\]
-\item $f$ ist ungerade.
-\[
-\square\ \text{Richtig}\qquad\qquad\square\ \text{Falsch}
-\]
-\item Das gewöhnliche Integral
-$\int_{-\infty}^{\infty}f(t)\dd t$ existiert.
-\[
-\square\ \text{Richtig}\qquad\qquad\square\ \text{Falsch}
-\]
-\item $f$ ist gerade.
-\[
-\square\ \text{Richtig}\qquad\qquad\square\ \text{Falsch}
-\]
-\end{enumerate}
-\end{mcbox}
-
 Für $f\in L^1(\R)$ ist in der hier verwendeten symmetrischen Konvention
 \[
 \widehat f(\omega)
@@ -853,7 +750,7 @@ f_a(t)=\ee^{-at}H(t)
 0,&t<0.
 \end{cases}
 \]
-In der symmetrischen Konvention gilt
+Es gilt
 \[
 \boxed{
 \widehat{f_a}(\omega)
@@ -870,9 +767,6 @@ f(t)\ee^{-\ii\omega t}\dd t$ beginnen.
 \item Bei stückweisen Funktionen das Integral an den Übergängen aufteilen.
 \item Symmetrie nutzen: Gerade Funktionen führen auf Cosinus-, ungerade auf
 Sinusintegrale.
-\item Bei Quotienten für $\omega=0$ den Grenzwert separat angeben.
-\item Ergebnis auf Parität, Konjugationssymmetrie und Abklingen für
-$|\omega|\to\infty$ prüfen.
 \end{enumerate}
 \end{kochrezeptbox}
 
@@ -899,14 +793,12 @@ fortgesetzten Wert bei $\omega=0$ an.
 
 \begin{kochrezeptbox}[title=Inverse Fourier-Transformation]
 \begin{enumerate}
-\item Den Ausdruck mit bekannten Transformationspaaren der symmetrischen
-Normierung vergleichen.
+\item Den Ausdruck mit bekannten Transformationspaaren vergleichen.
 \item In der symmetrischen Konvention gilt
 \[
 \mathcal F^{-1}[g](t)=\mathcal F[g](-t).
 \]
 \item Verschiebung, Skalierung und Modulation rückwärts anwenden.
-\item Produkte im Frequenzraum bei Bedarf als Faltungen im Zeitraum interpretieren.
 \end{enumerate}
 \end{kochrezeptbox}
 
@@ -931,12 +823,6 @@ Für $a>0$ gilt
 =\frac{1-\ee^{-at}}{a}\,H(t).
 }
 \]
-Für $t\geq0$ folgt dies direkt aus
-\[
-\int_0^t\ee^{-a\tau}\dd\tau
-=\frac{1-\ee^{-at}}a;
-\]
-für $t<0$ verschwindet die Faltung wegen der beiden Heaviside-Faktoren.
 \end{satzbox}
 
 \subsection{Anwendung auf Differentialgleichungen}
@@ -954,7 +840,7 @@ einer algebraischen Gleichung für $\widehat f$.
 \item Beide Seiten transformieren.
 \item Jede Ableitung durch eine Potenz von $\ii\omega$ ersetzen.
 \item Algebraisch nach $\widehat f(\omega)$ auflösen.
-\item Den Ausdruck als bekanntes Transformationspaar oder Produkt erkennen.
+\item Partialbruchzerlegung durchführen, falls nötig.
 \item Invers transformieren; Produkte im Frequenzraum entsprechen bis auf den
 Normierungsfaktor Faltungen im Zeitraum.
 \end{enumerate}
@@ -1170,36 +1056,6 @@ Ist $f$ $T$-periodisch, so gilt
 {1-\ee^{-sT}}.
 \]
 
-\begin{mcbox}[title=MC-Training: Wachstumskoeffizienten und Rechenregeln]
-Es seien $f_1,f_2:\R\to\C$ zwei Originalfunktionen. Sei $\sigma_1$ ein
-Wachstumskoeffizient von $f_1$ und $\sigma_2$ ein Wachstumskoeffizient von
-$f_2$. Entscheiden Sie für jede Aussage, ob sie wahr oder falsch ist.
-\begin{enumerate}
-\item Falls $\sigma_1\neq\sigma_2$, so gilt
-$\mathcal L[f_1]\neq\mathcal L[f_2]$.
-\[
-\square\ \text{Wahr}\qquad\qquad\square\ \text{Falsch}
-\]
-\item Der Wachstumskoeffizient von $f_1+f_2$ ist $\sigma_1+\sigma_2$.
-\[
-\square\ \text{Wahr}\qquad\qquad\square\ \text{Falsch}
-\]
-\item Für $f(t)=H(t)t\cos t$ gilt
-\[
-\mathcal L[f](s)
-=-\frac{1-s^2}{(s^2+1)^2}.
-\]
-(Hier bezeichnet $H$ die Heaviside-Funktion.)
-\[
-\square\ \text{Wahr}\qquad\qquad\square\ \text{Falsch}
-\]
-\item Der Wachstumskoeffizient von $f_1f_2$ ist $\sigma_1\sigma_2$.
-\[
-\square\ \text{Wahr}\qquad\qquad\square\ \text{Falsch}
-\]
-\end{enumerate}
-\end{mcbox}
-
 \subsection{Heaviside-Funktion und Zeitverschiebung}
 Die Heaviside-Funktion ist
 \[
@@ -1253,15 +1109,13 @@ für geeignete Testfunktionen $\varphi$. Formal gilt $H'=\delta$ und
 \[
 \mathcal L[\delta(t-a)](s)=\ee^{-as},\qquad a\ge0.
 \]
-Ein Dirac-Impuls modelliert eine konzentrierte Anregung und kann bei einer
-Differentialgleichung einen Sprung in der Lösung oder einer Ableitung erzeugen.
 
 \subsection{Faltung und Laplace-Transformation}
-Für kausale Funktionen ist die Faltung
+Für kausale Funktionen ($f(t)=0$ für $t<0$) ist die Faltung
 \[
 (f*g)(t)=\int_0^t f(\tau)g(t-\tau)\dd\tau.
 \]
-Es gilt ohne zusätzlichen Normierungsfaktor
+Es gilt
 \[
 \mathcal L[f*g](s)=F(s)G(s).
 \]
@@ -1293,8 +1147,7 @@ Theoretisch ist die Inverse durch das Bromwich-Integral gegeben:
 f(t)=\frac1{2\pi\ii}
 \int_{c-\ii\infty}^{c+\ii\infty}\ee^{st}F(s)\dd s,
 \]
-wobei $c$ rechts von allen Singularitäten liegt. In Prüfungsrechnungen verwendet man
-meist Tabellen, Verschiebungsregeln, quadratische Ergänzung und
+wobei $c$ rechts von allen Singularitäten liegt. In Prüfungsrechnungen verwendet man Tabellen, Verschiebungsregeln, quadratische Ergänzung und
 Partialbruchzerlegung.
 
 \begin{kochrezeptbox}[title=Inverse Laplace-Transformation]
@@ -1306,8 +1159,7 @@ s^2+ps+q=\left(s+\frac p2\right)^2+
 \]
 \item Zähler passend in einen Anteil proportional zu $s-a$ und einen konstanten
 Anteil zerlegen.
-\item Tabelle rückwärts lesen und Verschiebungen $\ee^{-as}$ als
-Zeitverzögerungen erkennen.
+\item Tabelle rückwärts lesen.
 \end{enumerate}
 \end{kochrezeptbox}
 
@@ -1353,7 +1205,6 @@ $\mathcal L[y^{(n)}]$ einsetzen.
 \item Algebraisch nach $Y(s)$ auflösen.
 \item Partialbruchzerlegung bzw. quadratische Ergänzung durchführen.
 \item Termweise rücktransformieren.
-\item Anfangswerte und nach Möglichkeit die Differentialgleichung kontrollieren.
 \end{enumerate}
 \end{kochrezeptbox}
 
@@ -1415,9 +1266,6 @@ erhalten wir
 f(t)=4\ee^t-4t\ee^t,\qquad t\geq0.
 }
 \]
-Der rechtsseitige Wert der Lösung ist $f(0^+)=4$. Der Dirac-Impuls bei
-$t=0$ erzeugt also einen Sprung der Größe $1$ gegenüber dem angegebenen
-Vorimpulswert $f(0)=3$.
 \end{beispielbox}
 
 \begin{trainingsbox}[title=Trainingsaufgabe: Anfangswertproblem mit Laplace lösen]
@@ -1458,7 +1306,7 @@ f(t)=\rule{10cm}{0.4pt}.
 \item Bei der DGL stets $F(s)=\mathcal L[f](s)$ definieren, die ganze
 Gleichung transformieren und Anfangswerte sofort einsetzen. Insbesondere gilt
 $\mathcal L[f']=sF-f(0)$.
-\item Spezielle Terme systematisch ersetzen:
+\item Spezielle Terme ersetzen:
 Faltungen werden zu Produkten, $\mathcal L[\delta(t)]=1$ und
 $\mathcal L[H(t-a)g(t-a)]=\ee^{-as}G(s)$.
 \item Termweise rücktransformieren und anschließend Anfangswert kontrollieren, falls genug Zeit.
@@ -1852,9 +1700,7 @@ negativ.
 \begin{satzbox}[title=Residuensatz]
 Sei $f$ bis auf endlich viele isolierte Singularitäten $z_1,\ldots,z_n$ in einem
 Gebiet $U$ holomorph und sei $\gamma$ ein geschlossener Pfad in $U$, der keine
-Singularität trifft. Zusätzlich sei $\wind(\gamma,w)=0$ für alle $w\notin U$
-(insbesondere genügt es, dass der von $\gamma$ umschlossene Bereich in $U$ liegt).
-Dann
+Singularität trifft. Dann
 \[
 \int_\gamma f(z)\dd z
 =2\pi\ii\sum_{k=1}^{n}
@@ -1869,7 +1715,6 @@ Singularitäten mit Windungszahl $0$ tragen nichts bei.
 \item Für jede Singularität die Windungszahl aus Lage und Orientierung ermitteln.
 \item Nur die benötigten Residuen berechnen.
 \item Mit $2\pi\ii\sum \wind\cdot\Res$ zusammensetzen.
-\item Bei einem reellen Ausgangsintegral kontrollieren, dass das Endergebnis reell ist.
 \end{enumerate}
 \end{kochrezeptbox}
 
@@ -2029,7 +1874,7 @@ h(x)\frac{p(x)}{q(x)}\dd x
 =2\pi\ii\sum_{\Imm z_k>0}
 \Res\!\left(h(z)\frac{p(z)}{q(z)},z_k\right),
 \]
-sofern die genannten Voraussetzungen erfüllt sind.
+sofern die genannten Voraussetzungen erfüllt sind (wenn in der Klausur sowas drankommt, dann sind sie sehr wahrscheinlich erfüllt).
 
 Obwohl Sinus und Cosinus auf $\R$ beschränkt sind, sind ihre komplexen
 Fortsetzungen nicht auf einer ganzen Halbebene beschränkt. Deshalb fasst man sie
@@ -2049,7 +1894,7 @@ Für $a<0$ schließt man unten und muss die negative Orientierung beachten.
 \item Ersetze Sinus/Cosinus durch den passenden Real- oder Imaginärteil von
 $\ee^{\ii ax}$.
 \item Wähle die Halbebene, in der der Exponentialfaktor abklingt.
-\item Prüfe, dass der Bogenbeitrag verschwindet.
+\item Prüfe, dass der Bogenbeitrag verschwindet (nur wenn verlangt).
 \item Berechne die Residuen in der gewählten Halbebene.
 \item Nimm erst am Ende Real- oder Imaginärteil.
 \end{enumerate}
@@ -2130,8 +1975,7 @@ Der symmetrische Cauchy-Hauptwert ist
 \PV\int_{-\infty}^{\infty}f(x)\dd x
 =\lim_{R\to\infty}\int_{-R}^{R}f(x)\dd x,
 \]
-mit zusätzlichen symmetrischen Aussparungen an reellen Polen. Er kann existieren,
-obwohl das gewöhnliche uneigentliche Integral nicht existiert.
+Er kann existieren, obwohl das gewöhnliche uneigentliche Integral nicht existiert.
 
 Wird ein einfacher reeller Pol $x_0$ auf einer oberen Halbkreiskontur durch einen
 kleinen Halbkreis \emph{oberhalb} der Achse ausgespart, so wird dieser kleine Bogen
@@ -2146,8 +1990,6 @@ Verschwindet der äußere Bogen, folgt bei endlich vielen einfachen reellen Pole
 =2\pi\ii\sum_{\Imm z_k>0}\Res(f,z_k)
 +\pi\ii\sum_{x_j\in\R}\Res(f,x_j).
 \]
-Die Formel hängt von der gewählten Einrückung ab; sicherer ist es, den Beitrag des
-kleinen Bogens jedes Mal mit Orientierung herzuleiten.
 
 \subsection{Rechteckkonturen}
 Bei Funktionen mit einer imaginären Periodizität oder Quasi-Periodizität ist eine
@@ -2157,21 +1999,13 @@ Rechteckkontur oft geeigneter als ein Halbkreis.
 \begin{enumerate}
 \item Den reellen Integranden komplex fortsetzen und alle Singularitäten
 bestimmen.
-\item Das Rechteck so wählen, dass nur wenige Pole darin liegen, und deren
-Residuen berechnen.
 \item Die vertikalen Kanten mit der $ML$-Abschätzung kontrollieren.
 \item Obere und untere Kante durch eine Verschiebung
 $z\mapsto z+\ii T$ vergleichen; dabei die umgekehrte Orientierung der oberen
 Kante beachten.
-\item Den Residuensatz anwenden, die Kantenbeiträge einsetzen und
-$R\to\infty$ nehmen.
-\item Den verbleibenden komplexen Vorfaktor vereinfachen und prüfen, dass das
-Ergebnis zum reellen Ausgangsintegral passt.
+\item Den Residuensatz anwenden.
 \end{enumerate}
 \end{kochrezeptbox}
-
-Entscheidend ist nicht die Form der Kontur, sondern dass ihre Kanten zur Struktur
-des Integranden passen.
 
 \begin{beispielbox}[title={Vorgerechnetes Prüfungsbeispiel: Aufgabe 12 (2025) -- uneigentliches Integral mit Rechteckkontur}]
 \textbf{Aufgabe.} Sei $a\in\R$ mit $0<a<1$. Berechnen Sie
@@ -2207,11 +2041,6 @@ $\gamma_1^R,\gamma_2^R,\gamma_3^R,\gamma_4^R$.
   \fill[red!75!black] (0,1.6) circle (2pt) node[right] {$\pi\ii$};
 \end{tikzpicture}
 \end{center}
-
-\textbf{Vorprüfung: Konvergenz des reellen Integrals.}
-Für $x\to+\infty$ verhält sich der Integrand wie
-$\ee^{-(1-a)x}$, für $x\to-\infty$ wie $\ee^{ax}$. Wegen
-$0<a<1$ ist das gewöhnliche uneigentliche Integral absolut konvergent.
 
 \textbf{Schritt 1: Komplexe Fortsetzung und Singularitäten.}
 Wir setzen
@@ -2296,16 +2125,11 @@ erhalten wir schließlich
 
 \begin{pruefungsbox}[title=Prüfungsblick: große Residuenaufgabe]
 \begin{itemize}
-\item Zuerst den Integraltyp erkennen: Bei einer vollen Periode führt meist
-$z=\ee^{\ii t}$ zum Einheitskreis; bei einem uneigentlichen Fourier-artigen
-Integral entscheidet der Abfall des Exponentialfaktors zwischen Halbkreis und
-Rechteck.
+\item Zuerst den Integraltyp erkennen: Periodisch oder uneigentlich.
 \item Das Verschwinden eines Bogens oder einer vertikalen Kante muss manchmal durch eine
 konkrete $ML$-Abschätzung gezeigt werden. Wenn nicht verlangt, könnt ihr einfach annehmen, dass der Beitrag verschwindet.
 \item Ein Pol auf der Kontur verbietet die direkte Anwendung des Residuensatzes.
 Dann ist eine Einrückung verlangt.
-\item Orientierung konsequent verfolgen: Die obere Rechteckkante und eine untere
-Halbkreiskontur liefern typischerweise ein zusätzliches Minuszeichen.
 \end{itemize}
 \end{pruefungsbox}
 }
@@ -2320,9 +2144,7 @@ Die zweite Prüfungsaufgabe ist folgendermassen aufgebaut:
 \item Theorieaussagen zum Satz von Liouville, zum Maximum-Modulus-Prinzip, zum
 Mittelwertsatz sowie zur Charakterisierung von Mengen, insbesondere
 Wegzusammenhang und einfachem Zusammenhang;
-\item Berechnung komplexer Integrale mit der Cauchyschen Integralformel, wobei die
-Kurve vorgegeben ist und ihre Lage beziehungsweise Orientierung ausgewertet werden
-muss;
+\item Berechnung komplexer Integrale mit der Cauchyschen Integralformel;
 \item explizite Berechnung von Kurvenintegralen über eine Parametrisierung;
 \end{itemize}
 \end{pruefungsbox}
@@ -2446,13 +2268,10 @@ Für $n\ge0$ gilt allgemeiner
 \item Nenner faktorisieren und alle Singularitäten markieren.
 \item Für jede Singularität die Windungszahl aus der Kurve ablesen; dabei
 Orientierung und mehrfache Umläufe beachten.
-\item Das Integral in lokale, einmal positiv umlaufene Standardintegrale
-zerlegen.
 \item Jeden relevanten Term auf
 $h(z)/(z-z_0)^{n+1}$ mit bei $z_0$ holomorphem Zähler $h$ bringen.
-\item Für $n=0$ die Cauchy-Formel und für $n\geq1$ die Ableitungsformel
-verwenden.
-\item Die lokalen Integrale mit ihren Windungszahlen multiplizieren und
+\item Ableitungsformel verwenden.
+\item Die Integrale mit ihren Windungszahlen multiplizieren und
 addieren.
 \end{enumerate}
 \end{kochrezeptbox}
@@ -2522,7 +2341,6 @@ I=2(-2\pi\ii\sin2)-\frac{\pi}{3}\ee^{3\ii}
 \]
 \end{beispielbox}
 
-\newpage
 \begin{trainingsbox}[title=Trainingsaufgabe: verschiedene Kurven]
 Gegeben sei
 \[
