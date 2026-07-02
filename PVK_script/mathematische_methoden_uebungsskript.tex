@@ -1,0 +1,2320 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable,skins}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,decorations.markings,patterns,positioning}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{enumitem}
+\usepackage{array,booktabs,longtable}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!60!black,urlcolor=blue!60!black}
+\setcounter{secnumdepth}{0}
+
+\newcommand{\C}{\mathbb C}
+\newcommand{\R}{\mathbb R}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\ii}{\mathrm i}
+\newcommand{\ee}{\mathrm e}
+\newcommand{\dd}{\,\mathrm d}
+\newcommand{\Arg}{\operatorname{Arg}}
+\newcommand{\Log}{\operatorname{Log}}
+\newcommand{\Res}{\operatorname{Res}}
+\newcommand{\Ree}{\operatorname{Re}}
+\newcommand{\Imm}{\operatorname{Im}}
+
+\newtcolorbox{importantbox}[1][]{breakable, enhanced, colframe=red!75!black, colback=red!2, coltitle=black, fonttitle=\bfseries, title=Wichtig, #1}
+\newtcolorbox{fragebox}[1][]{breakable, enhanced, colframe=black!70, colback=gray!3, fonttitle=\bfseries, title=Frage, #1}
+\newtcolorbox{antwortbox}[1][]{breakable, enhanced, colframe=blue!60!black, colback=blue!2, fonttitle=\bfseries, title=Antwort, #1}
+\newtcolorbox{tippbox}[1][]{breakable, enhanced, colframe=purple!70!black, colback=purple!3, fonttitle=\bfseries, title=Tipp, #1}
+\newtcolorbox{kochrezeptbox}[1][]{breakable, enhanced, colframe=green!45!black, colback=green!2, fonttitle=\bfseries, title=Kochrezept, #1}
+\newtcolorbox{beispielbox}[1][]{breakable, enhanced, colframe=black!65, colback=white, fonttitle=\bfseries, title=Beispiel, #1}
+
+\tikzset{axis/.style={->,thick}, vector/.style={->,very thick,blue!70!black}, patharrow/.style={postaction={decorate},decoration={markings,mark=at position .55 with {\arrow{Stealth}}}}}
+\newcommand{\complexplane}[4]{%
+\begin{tikzpicture}[scale=#1]
+  \draw[axis] (-#2,0)--(#2,0) node[right] {$\Re(z)$};
+  \draw[axis] (0,-#3)--(0,#3) node[above] {$\Im(z)$};
+  \draw[step=1,gray!20,thin] (-#2,-#3) grid (#2,#3);
+  #4
+\end{tikzpicture}}
+
+\title{Mathematische Methoden\\Übungsskript nach Wochen}
+\author{}
+\date{Woche 1 bis Woche 14}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section*{Vorbemerkung}
+Dieses Skript fasst den Übungsstoff der Vorlesung Mathematische Methoden zusammen. Ich kann keine Garantie für die Korrektheit und Vollständigkeit des Skripts geben. Falls euch
+Fehler im Skript auffallen, schreibt mir gerne eine E-Mail an rjahnke@ethz.ch. Ich werde die
+aktuellste Version des Skriptes immer auf meine Website hochladen.
+
+% =========================================================
+\section{Woche 1: Komplexe Zahlen}
+
+\subsection{1.1 Definition der komplexen Zahlen}
+Die komplexen Zahlen können als reeller Vektorraum mit einer speziellen Multiplikation verstanden werden:
+\[
+\C := \left(\R^2,+,\cdot\right), \qquad
+\binom{x}{y}\cdot\binom{x'}{y'}=
+\binom{xx'-yy'}{xy'+x'y}.
+\]
+Komplexe Zahlen sind also zunächst Vektoren in $\R^2$. Neu ist nicht die Addition, sondern die Multiplikation.
+
+\begin{importantbox}
+Komplexe Zahlen sind ein reeller Vektorraum mit einer speziellen Multiplikation. Die Addition funktioniert wie in $\R^2$; die komplexe Multiplikation ist der wesentliche neue Inhalt.
+\end{importantbox}
+
+\subsection{1.2 Normalform und Multiplikation}
+Da eine komplexe Zahl $z$ als reeller Vektor aufgefasst werden kann, besteht sie aus zwei reellen Zahlen $x,y\in\R$:
+\[
+ z=x+\ii y, \qquad \ii^2=-1.
+\]
+Hier kennzeichnet $\ii$ die zweite Komponente. Diese Darstellung heißt \emph{Normalform}. Dabei ist $x$ die erste Komponente und $y$ die zweite Komponente.
+
+Die spezielle Multiplikation stimmt mit der Regel $\ii^2=-1$ überein:
+\[
+(x+\ii y)(x'+\ii y')=xx'+\ii xy'+\ii x'y+\ii^2yy'
+=(xx'-yy')+\ii(xy'+x'y).
+\]
+Die Addition passt ebenfalls zur Vektoraddition:
+\[
+(x+\ii y)+(x'+\ii y')=(x+x')+\ii(y+y').
+\]
+
+\subsection{1.3 Darstellung von $\ii$ als Vektor}
+\begin{fragebox}
+Wie würde man $\ii$ als Vektor darstellen?
+\end{fragebox}
+\begin{antwortbox}
+\[
+\ii=0+\ii\cdot 1 \quad\Longleftrightarrow\quad \ii=\binom{0}{1}.
+\]
+\end{antwortbox}
+
+\subsection{1.4 Realteil, Imaginärteil und komplexe Ebene}
+Die erste Komponente bezeichnet man als Realteil:
+\[
+\Ree(z)=\Ree(x+\ii y)=x.
+\]
+Analog heißt die zweite Komponente Imaginärteil:
+\[
+\Imm(z)=y.
+\]
+Komplexe Zahlen lassen sich daher in der Ebene darstellen.
+
+\begin{center}
+\complexplane{0.75}{3.3}{3.3}{
+  \draw[vector] (0,0)--(2,2) node[above right] {$z=2+2\ii$};
+  \draw[dashed] (2,0)--(2,2)--(0,2);
+  \node[below] at (2,0) {$x$};
+  \node[left] at (0,2) {$y$};
+}
+\end{center}
+
+\begin{importantbox}
+Die komplexe Ebene ist als Vektorraum wie $\R^2$, aber statt des gewöhnlichen Skalarprodukts benutzen wir die komplexe Multiplikation.
+\end{importantbox}
+
+Die komplexe Multiplikation ermöglicht Rotation und Streckung in der Ebene. Multipliziert man zwei komplexe Zahlen als Vektoren, dann wird geometrisch ein Vektor rotiert und gestreckt.
+
+\subsection{1.5 Multiplikation als Rotation und Streckung}
+\begin{beispielbox}
+Wir stellen $z=1+2\ii$ als Vektor dar und multiplizieren mit $\ii$:
+\[
+z\cdot\ii=(1+2\ii)\ii=\ii+2\ii^2=-2+\ii.
+\]
+\end{beispielbox}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.75]
+  \draw[axis] (-3.2,0)--(3.2,0) node[right] {$\Re(z)$};
+  \draw[axis] (0,-3.2)--(0,3.2) node[above] {$\Im(z)$};
+  \draw[step=1,gray!20,thin] (-3,-3) grid (3,3);
+  \draw[vector] (0,0)--(1,2) node[above right] {$1+2\ii$};
+  \draw[vector,red!70!black] (0,0)--(-2,1) node[above left] {$-2+\ii$};
+  \draw[->,thick] (0.8,1.6) arc (63:153:1.8);
+  \node at (-0.3,2.35) {$90^\circ$};
+\end{tikzpicture}
+\end{center}
+
+Zur Streckung verwendet man den Betrag:
+\[
+ |z|=|x+\ii y|=\sqrt{x^2+y^2}.
+\]
+Beispiel: $|1+2\ii|=\sqrt{5}$ und $|-2+\ii|=\sqrt{5}$. Die Streckung ist also $1$.
+
+Zur Rotation verwendet man das Argument. Für $z=x+\ii y\neq 0$ ist der Hauptwert definiert durch
+\begin{importantbox}[title=Definition des Arguments]
+\begin{minipage}[c]{0.68\linewidth}
+\[
+\Arg(z):=
+\begin{cases}
+\displaystyle \arccos\left(\frac{x}{|z|}\right), & y\geq 0,\\[1.2ex]
+\displaystyle -\arccos\left(\frac{x}{|z|}\right), & y<0.
+\end{cases}
+\]
+\[
+\Arg(z)\in(-\pi,\pi],
+\qquad
+\Arg(x+\ii y)=\operatorname{atan2}(y,x).
+\]
+\end{minipage}\hfill
+\begin{minipage}[c]{0.27\linewidth}
+\centering
+\begin{tikzpicture}[scale=0.9]
+  \draw[axis] (-1.55,0)--(1.55,0) node[right] {$\Re(z)$};
+  \draw[axis] (0,-1.35)--(0,1.45) node[above] {$\Im(z)$};
+  \draw[blue!65!black,very thick,->]
+    (1.05,0) arc[start angle=0,end angle=170,radius=1.05];
+  \draw[blue!65!black,very thick,->]
+    (1.05,0) arc[start angle=0,end angle=-170,radius=1.05];
+  \node[above left] at (-0.82,0.35) {$+\pi$};
+  \node[below left] at (-0.82,-0.35) {$-\pi$};
+\end{tikzpicture}
+\end{minipage}
+\end{importantbox}
+Das Argument ist also der eindeutig gewählte Winkel des Vektors $(x,y)$ zur positiven reellen Achse.
+
+Im Beispiel gilt
+\[
+\Arg(1+2\ii)=\arccos\left(\frac1{\sqrt5}\right)\approx 63{,}435^\circ,
+\]
+\[
+\Arg(-2+\ii)=\arccos\left(-\frac2{\sqrt5}\right)\approx 153{,}435^\circ.
+\]
+Die Rotation ist also $153{,}435^\circ-63{,}435^\circ=90^\circ$.
+
+\begin{fragebox}
+War das ein Spezialfall oder ergibt eine Multiplikation mit $\ii$ immer eine reine $90^\circ$-Rotation? Warum?
+\end{fragebox}
+\begin{antwortbox}
+Für $z\neq0$ ist
+\[
+ z\ii = (x+\ii y)\ii=-y+\ii x.
+\]
+Der Vektor $(x,y)$ wird zu $(-y,x)$ gedreht. Das ist genau eine Drehung um $90^\circ$ gegen den Uhrzeigersinn.
+\end{antwortbox}
+
+\subsection{1.6 Polarform}
+Neben der Normalform gibt es die Polarform:
+\[
+z=x+\ii y=r(\cos\varphi+\ii\sin\varphi),\qquad r\in\R_+,\ \varphi\in[-\pi,\pi].
+\]
+Aus der Euler-Formel folgt
+\[
+\ee^{\ii\varphi}=\cos\varphi+\ii\sin\varphi,
+\]
+also
+\begin{importantbox}
+\[
+ z=r\ee^{\ii\varphi}.
+\]
+Die Polarform eignet sich besonders gut für Multiplikation, Division und Potenzen.
+\end{importantbox}
+
+\subsection{1.7 Bestimmung von $r$ und $\varphi$}
+\begin{fragebox}
+Was ist $r$ und $\varphi$ für $z=\ii$?
+\end{fragebox}
+\begin{antwortbox}
+\[
+r=|\ii|=1,\qquad \varphi=\frac\pi2,
+\]
+also
+\[
+\ii=\ee^{\ii\pi/2}.
+\]
+\end{antwortbox}
+
+Seien $z_1=r_1\ee^{\ii\varphi}$ und $z_2=r_2\ee^{\ii\psi}$. Dann gilt
+\[
+ z_1z_2=r_1r_2\ee^{\ii(\varphi+\psi)},
+\qquad
+ \frac{z_1}{z_2}=\frac{r_1}{r_2}\ee^{\ii(\varphi-
+\psi)}.
+\]
+Damit ist bewiesen: Die Beträge multiplizieren sich, die Winkel addieren sich.
+
+\subsection{1.8 Rechnen mit Polarform}
+Die Normalform ist nützlich für Addition und Subtraktion. Die Polarform ist nützlich für Multiplikation, Division und Potenzen.
+
+\begin{fragebox}
+Was ergibt $\ii^{202}$?
+\end{fragebox}
+\begin{tippbox}
+Verwende die Polarform $\ii=\ee^{\ii\pi/2}$.
+\end{tippbox}
+\begin{antwortbox}
+\[
+\ii^{202}=\left(\ee^{\ii\pi/2}\right)^{202}=\ee^{\ii 101\pi}=-1.
+\]
+\end{antwortbox}
+
+\subsection{1.9 Konjugation}
+Wir definieren die Konjugierte einer komplexen Zahl $z=x+\ii y$ als:
+\[
+ \overline z=x-\ii y,\qquad z\overline z=|z|^2=x^2+y^2.
+\]
+Damit kann man beispielsweise schreiben:
+\[
+ \frac{1}{z}=\frac{\overline z}{z\overline z}=\frac{x-\ii y}{x^2+y^2}.
+\]
+
+\begin{fragebox}
+Was ist die Konjugierte von $\ee^{\ii\varphi}$?
+\end{fragebox}
+\begin{antwortbox}
+\[
+\overline{\ee^{\ii\varphi}}=\ee^{-\ii\varphi}.
+\]
+\end{antwortbox}
+
+\subsection{2.0 Zusammenhang zwischen Realteil und Konjugation}
+\begin{importantbox}
+\[
+\Ree(z)=\frac12(z+\overline z).
+\]
+\end{importantbox}
+
+\begin{fragebox}
+Was ergibt sich analog für $\Imm(z)$ in Abhängigkeit von $z$ und $\overline z$?
+\end{fragebox}
+\begin{antwortbox}
+\[
+\Imm(z)=\frac{z-\overline z}{2\ii}.
+\]
+\end{antwortbox}
+
+\subsection{2.1 Normform und Konjugation}
+\begin{fragebox}
+Gilt
+\[
+ \Imm\bigl((-5+3\ii)(-7-5\ii)\bigr)=\Imm((-5+3\ii)(-7-5\ii))?
+\]
+\end{fragebox}
+\begin{tippbox}
+\[
+\Imm(\overline z)=-\Imm(z).
+\]
+\end{tippbox}
+\begin{antwortbox}
+Ja
+\end{antwortbox}
+
+\begin{fragebox}
+Berechne die Normform von
+\[
+z=\frac{27}{4+3\ii}.
+\]
+\end{fragebox}
+\begin{antwortbox}
+\[
+ z=\frac{27}{4+3\ii}\cdot\frac{4-3\ii}{4-3\ii}
+ =\frac{27(4-3\ii)}{4^2+3^2}
+ =\frac{108}{25}-\frac{81}{25}\ii.
+\]
+\end{antwortbox}
+
+\subsection{2.2 Rotation durch $\ee^{\ii\varphi}$}
+Wir haben gesehen: Multiplikation mit $\ee^{\ii\varphi}$ bedeutet Rotation um den Winkel $\varphi$.
+
+\begin{fragebox}
+Was bedeutet $z\ii^p$?
+\end{fragebox}
+\begin{tippbox}
+Schreibe $\ii=\ee^{\ii\pi/2}$ und benutze, dass Multiplikation mit $\ee^{\ii\varphi}$ eine Drehung um $\varphi$ ist.
+\end{tippbox}
+\begin{antwortbox}
+Da $\ii^p=\ee^{\ii p\pi/2}$, bedeutet Multiplikation mit $\ii^p$ eine Rotation um $p\pi/2$.
+\end{antwortbox}
+
+\subsection{2.3 Nicht-Eindeutigkeit von $\ee^{\ii x}$}
+\[
+\ee^{2\pi\ii}=1=\ee^0.
+\]
+\begin{importantbox}
+$\ee^{\ii x}$ ist nicht eindeutig im Argument, denn
+\[
+\ee^{\ii(\varphi+2\pi k)}=\ee^{\ii\varphi},\qquad k\in\Z.
+\]
+Daher ist $z$ in Polarform allgemein nicht eindeutig darstellbar, wenn man nicht einschränkt.
+\end{importantbox}
+Eine Einschränkung auf $(-\pi,\pi]$ ist nur unproblematisch, solange man keine Wurzeln, Potenzen und Logarithmen betrachtet.
+
+\subsection{2.5 $n$-te Wurzeln}
+Im Reellen ist Wurzelziehen nicht eindeutig: Es gibt etwa $\pm\sqrt a$. Analog gibt es im Komplexen $n$ verschiedene $n$-te Wurzeln.
+
+Sei
+\[
+z=r\ee^{\ii(\varphi+2\pi k)}.
+\]
+Dann sind die $n$-ten Wurzeln
+\begin{importantbox}
+\[
+w_k=\sqrt[n]{r}\,\ee^{\ii(\varphi+2\pi k)/n},\qquad k=0,1,\ldots,n-1.
+\]
+\end{importantbox}
+Die Werte wiederholen sich periodisch in $k$.
+
+\begin{fragebox}
+Wo liegen alle $n$ Wurzeln?
+\end{fragebox}
+\begin{antwortbox}
+Sie liegen auf einem Kreis um den Ursprung mit Radius $\sqrt[n]{r}$.
+\end{antwortbox}
+
+\begin{center}
+\begin{tikzpicture}[scale=1]
+  \draw[axis] (-1.5,0)--(1.7,0) node[right] {$\Re$};
+  \draw[axis] (0,-1.5)--(0,1.7) node[above] {$\Im$};
+  \draw (0,0) circle (1);
+  \foreach \ang/\lab in {25/$k=0$,115/$k=1$,205/$k=2$,295/$k=3$}{
+    \fill ({cos(\ang)},{sin(\ang)}) circle (1.5pt) node[shift={(\ang:0.28)}] {\lab};
+  }
+\end{tikzpicture}
+\end{center}
+
+% =========================================================
+\section{Woche 2: Mehrdeutigkeit komplexer Zahlen}
+
+\subsection{1.2 Mehrdeutigkeit der Polarform}
+\[
+\ee^{2\pi\ii}=1=\ee^{0}.
+\]
+\begin{importantbox}
+Die Exponentialdarstellung $\ee^{\ii x}$ ist nicht eindeutig. Denn
+\[
+ z=r\ee^{\ii(\varphi+2\pi k)},\qquad k\in\Z,
+\]
+ist dieselbe komplexe Zahl für alle $k$.
+\end{importantbox}
+Daher ist die Polarform ohne Einschränkung nicht eindeutig.
+
+\subsection{1.3 $n$-te Wurzeln}
+Sei $w^n=z$, $z=r\ee^{\ii(\varphi+2\pi k)}$. Dann
+\[
+w_k=\sqrt[n]{r}\,\ee^{\ii(\varphi+2\pi k)/n},\qquad k=0,\ldots,n-1.
+\]
+Nur diese $n$ Werte sind verschieden; danach wiederholen sie sich.
+
+\begin{fragebox}
+Wo liegen alle $n$ Wurzeln?
+\end{fragebox}
+\begin{antwortbox}
+Auf einem Kreis um den Ursprung mit Abstand $\sqrt[n]{r}$.
+\end{antwortbox}
+
+\subsection{1.4 Beispiel: fünfte Wurzeln von $\ii$}
+\begin{beispielbox}
+Gesucht sind die Lösungen von $z^5=\ii$. Weil
+\[
+\ii=\ee^{\ii\pi/2},
+\]
+gilt
+\[
+z_k=\ee^{\ii\left(\frac{\pi/2+2\pi k}{5}\right)},\qquad k=0,1,2,3,4.
+\]
+\end{beispielbox}
+
+\subsection{1.5 Beispiel: Wurzeln von $z^5=3\ee^{3\pi\ii/2}$}
+\begin{fragebox}
+Was ist die Lösung von $z^5=3\ee^{3\pi\ii/2}$?
+\end{fragebox}
+\begin{tippbox}
+Wandle die rechte Seite zuerst in Polarform um und verwende dann die Formel für fünfte Wurzeln.
+\end{tippbox}
+\begin{antwortbox}
+\[
+z_k=\sqrt[5]{3}\,\ee^{\ii\frac{3\pi/2+2\pi k}{5}},\qquad k=0,1,2,3,4.
+\]
+\end{antwortbox}
+
+\subsection{1.6 Komplexer Logarithmus}
+Ähnlich wie bei Wurzeln ist auch der komplexe Logarithmus nicht eindeutig.
+
+\begin{importantbox}
+Falls $\ee^w=z$, dann ist $w$ ein Logarithmus von $z$.
+\end{importantbox}
+
+Beispiel: $\ee^w=1$. Normalerweise wäre $w=\ln(1)=0$, aber im Komplexen gilt
+\[
+\ee^{2\pi\ii k}=1,
+\]
+also
+\[
+w=2\pi\ii k,\qquad k\in\Z.
+\]
+Es gibt unendlich viele Werte.
+
+Allgemein schreiben wir $z$ in Polarform:
+\[
+z=r\ee^{\ii(\Arg(z)+2\pi k)}.
+\]
+Dann
+\[
+\log(z)=\ln|z|+\ii(\Arg(z)+2\pi k),\qquad k\in\Z.
+\]
+Für den Hauptwert setzt man $k=0$ und beschränkt das Argument.
+
+\begin{importantbox}
+\[
+\Log(z)=\ln|z|+\ii\Arg(z),\qquad \Arg(z)\in(-\pi,\pi].
+\]
+\end{importantbox}
+
+\subsection{1.7 Beispiele zum Logarithmus}
+\begin{fragebox}
+Was ist $\Log(-\sqrt2+\ii\sqrt2)$?
+\end{fragebox}
+\begin{tippbox}
+Verwende die Polarform: zuerst Betrag und Hauptargument bestimmen.
+\end{tippbox}
+\begin{antwortbox}
+Der Betrag ist $2$ und das Argument ist $3\pi/4$. Daher
+\[
+\Log(-\sqrt2+\ii\sqrt2)=\ln(2)+\ii\frac{3\pi}{4}.
+\]
+\end{antwortbox}
+
+\begin{fragebox}
+Was ist $\Log((-\sqrt2+\ii\sqrt2)^2)$?
+\end{fragebox}
+\begin{antwortbox}
+Zunächst ist $(-\sqrt2+\ii\sqrt2)^2=-4\ii$. Damit ist
+\[
+\Log((-\sqrt2+\ii\sqrt2)^2)=\Log(-4\ii)=\ln(4)-\ii\frac{\pi}{2}.
+\]
+Achtung: $2\Log(z)=2\ln(2)+\ii\frac{3\pi}{2}=\ln(4)+\ii\frac{3\pi}{2}$ liegt nicht im Hauptzweig und muss durch Subtraktion von $2\pi\ii$ auf $\ln(4)-\ii\pi/2$ gebracht werden.
+\end{antwortbox}
+
+\begin{importantbox}
+Die Regel $\Log(z^n)=n\Log(z)$ gilt im Hauptzweig nicht ohne Anpassung des Arguments auf $(-\pi,\pi]$.
+\end{importantbox}
+
+% =========================================================
+\section{Woche 3: Fundamentalsatz}
+
+\subsection{1.1 Beispiel: fünfte Wurzeln von $1$}
+Für die fünften Wurzeln von $1$ gilt
+\[
+1=\ee^{2\pi\ii k},\qquad k\in\Z,
+\]
+und damit
+\[
+z_k=\ee^{2\pi\ii k/5},\qquad k=0,1,2,3,4.
+\]
+
+\begin{center}
+\begin{tikzpicture}[scale=1]
+  \draw[axis] (-1.4,0)--(1.6,0) node[right] {$\Re$};
+  \draw[axis] (0,-1.4)--(0,1.6) node[above] {$\Im$};
+  \draw[red!70!black] (0,0) circle (1);
+  \foreach \k in {0,...,4}{
+    \pgfmathsetmacro{\ang}{72*\k}
+    \fill[red!70!black] ({cos(\ang)},{sin(\ang)}) circle (1.8pt) node[shift={(\ang:0.25)}] {$k=\k$};
+  }
+\end{tikzpicture}
+\end{center}
+Man kann die Wurzeln gegen den Uhrzeigersinn wählen, im Uhrzeigersinn oder in anderer Reihenfolge, etwa $k=0,1,-1,2,-2$.
+
+\subsection{1.2 Konjugierte Wurzeln}
+Wenn $z$ eine Wurzel von $z^5=1$ ist, dann ist auch $\overline z$ eine Lösung. Allgemeiner gilt:
+
+\begin{importantbox}
+Falls $z$ eine Wurzel einer reellen Zahl ist, also $z^n=a\in\R$, dann ist auch $\overline z$ eine Lösung.
+\end{importantbox}
+
+\subsection{1.3 Fundamentalsatz der Algebra}
+Das Polynom $z^n-a$ hat $n$ Nullstellen, denn es hat $n$ Wurzeln. Das verallgemeinert der Fundamentalsatz der Algebra.
+
+\begin{importantbox}
+Sei
+\[
+p(z)=a_0+a_1z+\cdots+a_nz^n,
+\qquad n\in\N,
+\qquad a_n\neq0.
+\]
+Dann besitzt $p$ in $\C$ genau $n$ Nullstellen, wenn Vielfachheiten mitgezählt werden.
+\end{importantbox}
+Achtung: Die Nullstellen müssen nicht verschieden sein. Zum Beispiel ist $1$ eine doppelte Nullstelle von $(z-1)^2=0$.
+
+\subsection{1.4 Frage zum Fundamentalsatz}
+\begin{fragebox}
+Sei
+\[
+p(z)=z^5-15z^4+95z^3-315z^2+544z-390.
+\]
+$3+2\ii$ ist eine Nullstelle. Ist auch $3-2\ii$ eine Nullstelle? Wie viele Nullstellen hat dieses Polynom?
+\end{fragebox}
+\begin{antwortbox}
+Da das Polynom reelle Koeffizienten hat, tritt zu jeder nicht-reellen Nullstelle auch die konjugierte Nullstelle auf. Also ist $3-2\ii$ ebenfalls eine Nullstelle. Da der Grad $5$ ist, hat das Polynom insgesamt $5$ Nullstellen, mit Vielfachheiten gezählt.
+\end{antwortbox}
+
+\subsection{1.5 Verständnis der komplexen Ebene}
+\begin{fragebox}
+Zeichne
+\[
+\left\{z\in\C\,\middle|\,\left|\frac{z-1}{z+\ii}\right|=3\right\}.
+\]
+\end{fragebox}
+\begin{antwortbox}
+Setze $z=x+\ii y$. Dann
+\[
+|x-1+\ii y|^2=9|x+\ii(y+1)|^2.
+\]
+Also
+\[
+(x-1)^2+y^2=9(x^2+(y+1)^2).
+\]
+Ausmultiplizieren liefert
+\[
+x^2-2x+1+y^2=9x^2+9y^2+18y+9.
+\]
+Damit
+\[
+8x^2+2x+8y^2+18y+8=0.
+\]
+Durch quadratische Ergänzung erhält man
+\[
+\left(x+\frac18\right)^2+\left(y+\frac98\right)^2=\frac{81}{64}+\frac{1}{64}-1=\frac{18}{64}=\frac{9}{32}.
+\]
+Das ist ein Kreis mit Mittelpunkt $(-1/8,-9/8)$ und Radius $\sqrt{9/32}=\frac{3}{4\sqrt2}$.
+\end{antwortbox}
+
+\begin{center}
+\begin{tikzpicture}[scale=1.2]
+  \draw[axis] (-2.1,0)--(1.4,0) node[right] {$\Re$};
+  \draw[axis] (0,-2.3)--(0,1.0) node[above] {$\Im$};
+  \draw[blue!70!black,thick] (-0.125,-1.125) circle ({3/(4*sqrt(2))});
+  \fill (-0.125,-1.125) circle (1.5pt) node[below left] {$(-\frac18,-\frac98)$};
+\end{tikzpicture}
+\end{center}
+
+% =========================================================
+\section{Woche 4: Komplexe Funktionen}
+
+\subsection{1.1 Definition einer komplexen Funktion}
+Eine komplexe Funktion ist eine Abbildung
+\[
+f:D\to\C,
+\]
+wobei $D$ entweder eine Teilmenge der reellen Zahlen oder eine Teilmenge der komplexen Zahlen sein kann.
+
+\begin{beispielbox}
+\[
+f(x)=x+\ii \quad\text{mit reellem Definitionsbereich},
+\]
+\[
+f(z)=z^2 \quad\text{mit komplexem Definitionsbereich}.
+\]
+\end{beispielbox}
+
+\begin{importantbox}
+Der Definitionsbereich $D$ kann eine Teilmenge von $\R$ oder eine Teilmenge von $\C$ sein. Das ist für Konvergenzfragen wichtig.
+\end{importantbox}
+
+\subsection{1.2 Warum ist $D$ wichtig?}
+Wenn wir eine Funktion betrachten, möchten wir wissen, wo sie konvergiert. Wir wählen daher $D$ so, dass die Funktion auf $D$ konvergiert.
+
+Viele Funktionen lassen sich als Potenzreihe schreiben:
+\[
+f(z)=\sum_{n=0}^{\infty}a_nz^n.
+\]
+Dann berechnet man den Konvergenzradius $R$ und wählt
+\[
+D=B(0,R),
+\]
+den offenen Ball um $(0,0)$ mit Radius $R$.
+
+\subsection{1.3 Definitionsbereich einer verschobenen Potenzreihe}
+\begin{fragebox}
+Welches $D$ würden wir für
+\[
+f(z)=\sum_{n=0}^{\infty}a_n(z-z_0)^n
+\]
+wählen?
+\end{fragebox}
+\begin{antwortbox}
+\[
+D=B(z_0,R).
+\]
+\end{antwortbox}
+
+\subsection{1.5 Nicht existierender Grenzwert}
+\begin{fragebox}
+Existiert
+\[
+\lim_{z\to0}\frac{\overline z}{z}?
+\]
+\end{fragebox}
+\begin{antwortbox}
+Nähert man sich auf der reellen Achse, also $z=x$, so gilt $\overline z/z=x/x=1$. Nähert man sich auf der imaginären Achse, also $z=\ii y$, so gilt
+\[
+\frac{\overline z}{z}=\frac{-\ii y}{\ii y}=-1.
+\]
+Die Grenzwerte stimmen nicht überein, also existiert der Grenzwert nicht.
+\end{antwortbox}
+
+\subsection{1.6 Komplexe Ableitung}
+Ableitungen komplexer Funktionen funktionieren im Prinzip wie bei reellen Funktionen. Falls
+\[
+\lim_{z\to z_0}\frac{f(z)-f(z_0)}{z-z_0}
+\]
+existiert, ist $f$ in $z_0$ komplex differenzierbar.
+
+Es gelten die üblichen Regeln: differenzierbar impliziert stetig, Quotientenregel, Produktregel, Kettenregel.
+
+\subsection{1.7 Holomorphie}
+\begin{importantbox}
+\begin{enumerate}[label=\arabic*.]
+\item $f$ ist holomorph auf $U$, falls $f$ auf ganz $U$ komplex differenzierbar ist.
+\item $f$ ist holomorph in $z_0$, falls $f$ in einer offenen Menge um $z_0$ holomorph ist.
+\end{enumerate}
+\end{importantbox}
+
+Achtung: Komplex differenzierbare Funktionen verhalten sich zwar formal wie reelle differenzierbare Funktionen, Holomorphie ist aber eine sehr starke Eigenschaft.
+
+\subsection{1.8 Beispiele für Holomorphie}
+\begin{fragebox}
+Welche dieser Funktionen sind holomorph auf $D=B(0,1)$?
+\begin{enumerate}[label=\roman*)]
+\item $f(z)=\sum_{n=0}^{\infty}2^nz^n$
+\item $f(z)=\frac{1}{1+3z}$
+\item $f(z)=\ee^{z^2}$
+\item $f(z)=\frac1{1-z\overline z}$
+\item $f(z)=\frac1{1-z^2}$
+\item $f(z)=1+z+z^2+z^3+\cdots$
+\end{enumerate}
+\end{fragebox}
+\begin{tippbox}
+Nicht stetig bedeutet nicht differenzierbar. Außerdem ist eine Abhängigkeit von $\overline z$ ein typischer Hinweis darauf, dass eine Funktion nicht holomorph ist.
+\end{tippbox}
+\begin{antwortbox}
+Holomorph sind ii), iii), v) und vi), sofern die jeweilige Singularität nicht im Gebiet liegt bzw. die Reihe dort konvergiert. i) hat Konvergenzradius $1/2$ und ist daher nicht auf ganz $B(0,1)$ holomorph. iv) hängt von $\overline z$ ab und ist daher im Allgemeinen nicht holomorph. Stetigkeit allein ist nicht Differenzierbarkeit.
+\end{antwortbox}
+
+% =========================================================
+\section{Woche 5: Holomorphie}
+
+\subsection{1.1 Zerlegung in Real- und Imaginärteil}
+Eine komplexe Funktion lässt sich schreiben als
+\[
+f(z)=f(x+\ii y)=u(x,y)+\ii v(x,y),
+\]
+wobei $u,v$ reelle Funktionen sind.
+
+Wir betrachten drei Ableitungsbegriffe:
+\begin{enumerate}[label=\Roman*.]
+\item Partielle Ableitungen $\partial f/\partial x$ und $\partial f/\partial y$, wie im Reellen.
+\item Komplexe Differenzierbarkeit:
+\[
+\lim_{z\to z_0}\frac{f(z)-f(z_0)}{z-z_0}\quad\text{existiert}.
+\]
+\item Holomorphie: komplex differenzierbar in $z_0$ und in einer offenen Menge um $z_0$.
+\end{enumerate}
+
+Setzt man $f=u+\ii v$ ein, erhält man
+\[
+f'(z_0)=\frac{\partial f}{\partial x}(z_0)=-\ii\frac{\partial f}{\partial y}(z_0).
+\]
+
+\begin{importantbox}
+Die Cauchy-Riemann-Gleichungen lauten
+\[
+u_x(x,y)=v_y(x,y),\qquad u_y(x,y)=-v_x(x,y).
+\]
+Sind die partiellen Ableitungen in einer offenen Umgebung stetig und gelten dort die Cauchy-Riemann-Gleichungen, dann ist $f$ auf dieser Umgebung holomorph.
+\end{importantbox}
+
+\subsection{1.2 Beispiel zu Cauchy-Riemann}
+\begin{beispielbox}
+\[
+f(z)=3x^3-9xy^2+\ii(9x^2y-3y^3).
+\]
+Dann
+\[
+u=3x^3-9xy^2,
+\qquad
+v=9x^2y-3y^3.
+\]
+Die partiellen Ableitungen sind
+\[
+u_x=9x^2-9y^2,
+\quad u_y=-18xy,
+\quad v_x=18xy,
+\quad v_y=9x^2-9y^2.
+\]
+Also sind die Cauchy-Riemann-Gleichungen erfüllt und alle Ableitungen stetig. Daher ist $f$ holomorph.
+\end{beispielbox}
+
+\subsection{1.3 Beispiel: $f(z)=(x-\ii y)^2$}
+\begin{fragebox}
+Ist $f(z)=(x-\ii y)^2$ holomorph?
+\end{fragebox}
+\begin{antwortbox}
+\[
+f(z)=x^2-y^2-2\ii xy.
+\]
+Also
+\[
+u=x^2-y^2,
+\qquad v=-2xy.
+\]
+Damit
+\[
+u_x=2x,
+\quad u_y=-2y,
+\quad v_x=-2y,
+\quad v_y=-2x.
+\]
+Die Cauchy-Riemann-Gleichungen sind nur bei $(x,y)=(0,0)$ erfüllt. Dort ist $f$ komplex differenzierbar, aber nicht in einer offenen Umgebung. Also ist $f$ nirgends holomorph.
+\end{antwortbox}
+
+\begin{importantbox}
+Falls eine Funktion wirklich von $\overline z$ abhängt, ist sie typischerweise nicht holomorph.
+\end{importantbox}
+
+\subsection{1.4 Harmonizität}
+Sei $f=u+\ii v$ holomorph. Dann erfüllen $u$ und $v$ die Laplace-Gleichung:
+\begin{importantbox}
+\[
+\frac{\partial^2u}{\partial x^2}+\frac{\partial^2u}{\partial y^2}=0,
+\qquad
+\frac{\partial^2v}{\partial x^2}+\frac{\partial^2v}{\partial y^2}=0.
+\]
+\end{importantbox}
+
+\subsection{1.5 Bedingung an $c$}
+\begin{fragebox}
+Sei $f=u+\ii v$ und
+\[
+u=x^2+bxy+cy^2,
+\qquad b,c\in\R.
+\]
+Unter welcher Bedingung ist $f$ holomorph?
+\end{fragebox}
+\begin{antwortbox}
+Falls $f$ holomorph ist, ist $u$ harmonisch:
+\[
+u_{xx}+u_{yy}=2+2c=0.
+\]
+Also
+\[
+c=-1.
+\]
+\end{antwortbox}
+
+\subsection{1.6 Holomorphie der konjugierten Funktion}
+\begin{fragebox}
+$f=u+\ii v$ ist holomorph. Ist $g(z)=\overline{f(\overline z)}$ holomorph?
+\end{fragebox}
+\begin{antwortbox}
+Schreibt man $g(z)$ in Komponenten, erhält man
+\[
+g(x,y)=u(x,-y)-\ii v(x,-y).
+\]
+Mit den Cauchy-Riemann-Gleichungen für $f$ folgt, dass auch $g$ die Cauchy-Riemann-Gleichungen erfüllt. Auf dem entsprechend gespiegelten Definitionsgebiet ist $g$ daher holomorph.
+\end{antwortbox}
+
+\subsection{1.7 Komplexe Pfade}
+Ein Pfad ist eine Abbildung
+\[
+\gamma:[a,b]\to\C.
+\]
+Man kann also Kurven in der komplexen Ebene parametrisieren.
+
+\begin{center}
+\begin{tikzpicture}[scale=1]
+  \draw[axis] (-0.5,0)--(4,0) node[right] {$\Re$};
+  \draw[axis] (0,-0.5)--(0,2.2) node[above] {$\Im$};
+  \draw[blue,thick,patharrow] (0.5,0.5) .. controls (1.4,1.6) and (2.5,0.2) .. (3.3,1.5);
+  \node at (0.45,0.25) {$\gamma(a)$};
+  \node at (3.4,1.7) {$\gamma(b)$};
+\end{tikzpicture}
+\end{center}
+
+\begin{beispielbox}
+\[
+\gamma:[0,1]\to\C,
+\qquad
+\gamma(t)=(1+\ii)t.
+\]
+\end{beispielbox}
+
+\subsection{1.8 Kurvenintegral}
+\begin{importantbox}
+Für ein Kurvenintegral nehmen wir den Pfad $\gamma:[a,b]\to\C$ und definieren
+\[
+\int_\gamma f(z)\dd z=\int_a^b f(\gamma(t))\gamma'(t)\dd t.
+\]
+\end{importantbox}
+Anschaulich wird der Vektor $f(\gamma(t))\gamma'(t)$ entlang des Pfades aufsummiert.
+
+\subsection{2.0 Beispiel Kurvenintegral}
+\begin{beispielbox}
+Berechne
+\[
+\int_\gamma 3z\dd z,
+\qquad \gamma(t)=1+\ii t,
+\quad t\in[0,1].
+\]
+Dann $\gamma'(t)=\ii$ und
+\[
+\int_0^1 3(1+\ii t)\ii\dd t=\int_0^1(3\ii-3t)\dd t=3\ii-\frac32.
+\]
+\end{beispielbox}
+
+\subsection{2.1 Parametrisierung einer Strecke}
+\begin{fragebox}
+Wie würde man den folgenden Weg parametrisieren: eine Strecke von $1$ nach $2$ auf der reellen Achse?
+\end{fragebox}
+\begin{antwortbox}
+\[
+\gamma:[0,1]\to\C,
+\qquad
+\gamma(t)=1+t.
+\]
+Allgemein gilt für eine gerade Strecke von $a$ nach $b$:
+\begin{importantbox}
+\[
+\gamma(t)=a+t(b-a),\qquad t\in[0,1].
+\]
+\end{importantbox}
+\end{antwortbox}
+
+% =========================================================
+\section{Woche 6: Kurvenintegrale}
+
+\subsection{1.1 Parametrisierungen}
+Für eine Strecke von $a$ nach $b$ verwendet man die Parametrisierung:
+\[
+\gamma_1(t)=a+t(b-a),\qquad t\in[0,1].
+\]
+Beispiel:
+\[
+\gamma_1(t)=-4+2\ii+t((-2+2\ii)-(-4+2\ii))=-4+2\ii+2t.
+\]
+
+Ein Kreis um $z_0$ mit Radius $r$ wird parametrisiert durch
+\begin{importantbox}
+\[
+\gamma(t)=z_0+r\ee^{2\pi\ii t},\qquad t\in[0,1],
+\]
+oder alternativ durch $\gamma(t)=z_0+r\ee^{\ii t}$, $t\in[0,2\pi]$.
+\end{importantbox}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+  \draw[axis] (-5,0)--(2,0) node[right] {$\Re$};
+  \draw[axis] (0,-2)--(0,3) node[above] {$\Im$};
+  \draw[blue,thick,->] (-4,2)--(-2,2) node[midway,above] {$\gamma_1$};
+  \draw[purple,thick,patharrow] (0,0) circle (1);
+  \node[purple] at (1.3,-0.4) {$\gamma_2$};
+\end{tikzpicture}
+\end{center}
+
+\subsection{1.2 Parametrisierung einer geschlossenen Kurve}
+\begin{fragebox}
+Wie würde man die geschlossene obere Halbkreis-Kurve von $1$ nach $3$ mit Mittelpunkt $2$ parametrisieren?
+\end{fragebox}
+\begin{antwortbox}
+\[
+\gamma(t)=2-\ee^{-\pi\ii t},\qquad t\in[0,1].
+\]
+Für $t=0$ ist $\gamma(0)=1$, für $t=1$ ist $\gamma(1)=3$, und die Kurve läuft über den oberen Halbkreis.
+\end{antwortbox}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.9]
+  \draw[axis] (0,0)--(4.5,0) node[right] {$\Re$};
+  \draw[axis] (0,-1.2)--(0,2.2) node[above] {$\Im$};
+  \draw[blue,thick,patharrow] (1,0) arc (180:0:1);
+  \fill (1,0) circle (1.5pt) node[below] {$1$};
+  \fill (2,0) circle (1pt) node[below] {$2$};
+  \fill (3,0) circle (1.5pt) node[below] {$3$};
+\end{tikzpicture}
+\end{center}
+
+\subsection{1.3 Wegunabhängigkeit und Stammfunktion}
+Meist berechnet man geschlossene Wegintegrale:
+\[
+\int_\gamma f(z)\dd z=\int_0^1 f(\gamma(t))\gamma'(t)\dd t.
+\]
+Ist das Integral unabhängig vom genauen Weg und hängt nur von den Endpunkten ab, dann gilt
+\[
+\int_\gamma f(z)\dd z=F(\gamma(1))-F(\gamma(0)).
+\]
+Für geschlossene Wege ist dann das Integral gleich null.
+
+\begin{importantbox}
+Äquivalent dazu ist: $F'(z)=f(z)$, also besitzt $f$ die Stammfunktion $F$.
+\end{importantbox}
+
+Achtung: Das gilt nur, falls $f$ auf einer wegzusammenhängenden Menge definiert und stetig ist.
+
+\subsection{1.4 Wegzusammenhängend}
+\begin{importantbox}
+Eine Menge heißt wegzusammenhängend, wenn es von jedem Punkt der Menge einen Pfad zu jedem anderen Punkt der Menge gibt.
+\end{importantbox}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.9]
+  \draw[thick] (0,0) circle (0.8);
+  \draw[thick] (1.8,0.1) circle (0.5);
+  \node at (0,-1.1) {ja};
+  \draw[thick] (4,0) circle (0.7);
+  \draw[thick] (5.5,0) circle (0.7);
+  \node at (4.75,-1.1) {nein};
+  \draw[thick] (8,0) .. controls (8.7,0.8) and (9.5,0.5) .. (9.3,-0.4) .. controls (8.8,-1) and (7.6,-0.8) .. cycle;
+  \node at (8.7,-1.1) {ja};
+\end{tikzpicture}
+\end{center}
+
+\subsection{1.5 Einfach zusammenhängend}
+\begin{importantbox}
+Eine Menge ist einfach zusammenhängend, wenn sie wegzusammenhängend ist und man jede geschlossene Schlaufe in der Menge auf einen Punkt zusammenziehen kann.
+\end{importantbox}
+
+Beispiele:
+\begin{enumerate}[label=\alph*)]
+\item $\R^2\setminus\{0\}$: nicht einfach zusammenhängend.
+\item $\{z\in\C\mid \Imm(z)\neq0\}$: nicht wegzusammenhängend.
+\item $\{z\in\C\mid |\Imm(z)|>0\text{ und }|z|>3\}$: je nach Gebietskomponente zu betrachten.
+\item $\{z\in\C\mid \Imm(z)>0\text{ oder }\Imm(z)+\Ree(z)>0\}$: einfach zusammenhängend.
+\item $\{z\in\C\mid 0<|z|<1\}$: nicht einfach zusammenhängend.
+\item $\{z\in\C\mid 2<|z|<3\}$: nicht einfach zusammenhängend.
+\end{enumerate}
+
+\subsection{1.6 Kurvenintegral über $z^2$}
+\begin{fragebox}
+Was ist
+\[
+\int_\gamma z^2\dd z,
+\qquad \gamma(t)=\ee^{\pi\ii t},\quad t\in[0,1]?
+\]
+\end{fragebox}
+\begin{antwortbox}
+Da $F(z)=\frac13z^3$ eine Stammfunktion von $z^2$ ist,
+\[
+\int_\gamma z^2\dd z=F(\gamma(1))-F(\gamma(0))
+=F(-1)-F(1)=-\frac13-\frac13=-\frac23.
+\]
+\end{antwortbox}
+
+\subsection{1.7 Betrag im Kurvenintegral}
+\begin{fragebox}
+Was ist
+\[
+\int_\gamma |z|^2\dd z
+\]
+für den Weg, der von $-1$ nach $1$ über die reelle Strecke und dann über den oberen Halbkreis zurückläuft?
+\end{fragebox}
+\begin{antwortbox}
+Der Weg wird in zwei Teile zerlegt.
+
+Erster Weg: $\gamma_1(t)=-1+2t$, $t\in[0,1]$. Dann
+\[
+I_1=\int_0^1|-1+2t|^2\cdot2\dd t=\frac23.
+\]
+Zweiter Weg: $\gamma_2(t)=\ee^{\pi\ii t}$, $t\in[0,1]$. Dann $|\gamma_2(t)|^2=1$ und
+\[
+I_2=\int_0^1 \pi\ii\ee^{\pi\ii t}\dd t=\ee^{\pi\ii}-1=-2.
+\]
+Also
+\[
+\int_\gamma |z|^2\dd z=\frac23-2=-\frac43.
+\]
+Man muss $|z|^2$ nicht als $z\overline z$ behandeln, wenn man direkt parametrisiert.
+\end{antwortbox}
+
+\subsection{1.8 Cauchyscher Integralsatz}
+\begin{importantbox}
+Falls $U$ einfach zusammenhängend ist und $f:U\to\C$ holomorph, dann besitzt $f$ eine Stammfunktion. Für jeden geschlossenen Weg $\gamma$ gilt
+\[
+\int_\gamma f(z)\dd z=0.
+\]
+\end{importantbox}
+
+% =========================================================
+\section{Woche 7: Cauchysche Integralformel}
+
+\subsection{1.1 Cauchysche Integralformel}
+Direkte Parametrisierung von Kurvenintegralen kann schnell kompliziert werden. Deshalb verwendet man die Cauchysche Integralformel.
+
+\begin{importantbox}
+Ist $U$ einfach zusammenhängend, $\gamma$ geschlossen, positiv orientiert, $z_0\in U$ und $f$ holomorph, dann gilt
+\[
+f(z_0)=\frac{1}{2\pi\ii}\int_\gamma \frac{f(z)}{z-z_0}\dd z.
+\]
+\end{importantbox}
+
+\begin{center}
+\begin{tikzpicture}[scale=1]
+  \draw[axis] (-1.2,0)--(4,0) node[right] {$\Re$};
+  \draw[axis] (0,-1.2)--(0,3) node[above] {$\Im$};
+  \draw[purple,dashed] (2,1.1) circle (1.3);
+  \draw[blue,thick,patharrow] (2,1.1) +(-0.8,0) .. controls (1.3,2) and (2.4,2.5) .. (2.9,1.6) .. controls (3.2,0.7) and (1.8,0.4) .. cycle;
+  \fill (2,1.1) circle (1.5pt) node[right] {$z_0$};
+  \node[blue] at (3.2,1.7) {$\gamma$ läuft gegen den Uhrzeigersinn};
+  \node[purple] at (3.4,2.4) {$U$};
+\end{tikzpicture}
+\end{center}
+
+\subsection{1.2 Beispiel}
+\begin{beispielbox}
+Berechne
+\[
+\int_\gamma \frac{1}{z(z+3\ii)}\dd z,
+\qquad \gamma(t)=\ee^{2\pi\ii t}.
+\]
+\end{beispielbox}
+\begin{kochrezeptbox}
+\begin{enumerate}[label=\Roman*.]
+\item Bestimme $z_0$: Im Nenner steht $z$, also $z_0=0$. Außerdem liegt $-3\ii$ nicht in $\gamma$.
+\item Schreibe
+\[
+\frac{1}{z(z+3\ii)}=\frac{f(z)}{z-z_0},\qquad f(z)=\frac1{z+3\ii}.
+\]
+\item Dann
+\[
+\int_\gamma \frac{f(z)}{z}\dd z=2\pi\ii f(0)=2\pi\ii\frac1{3\ii}=\frac{2\pi}{3}.
+\]
+\end{enumerate}
+\end{kochrezeptbox}
+
+\subsection{1.3 Orientierung}
+\begin{fragebox}
+Wie verändert sich das Integral, wenn $\gamma$ im Uhrzeigersinn läuft?
+\end{fragebox}
+\begin{antwortbox}
+Das Vorzeichen ändert sich. Man multipliziert das Ergebnis mit $-1$.
+\[
+\int_{-\gamma} f(z)\dd z=-\int_\gamma f(z)\dd z.
+\]
+\end{antwortbox}
+
+\subsection{1.4 Allgemeine Cauchy-Formel für Ableitungen}
+\begin{importantbox}
+Für $n\in\N_0$ gilt
+\[
+f^{(n)}(z_0)=\frac{n!}{2\pi\ii}\int_\gamma\frac{f(z)}{(z-z_0)^{n+1}}\dd z.
+\]
+Das ist eine der wichtigsten Formeln der Vorlesung. Es folgt auch: Ist $f$ holomorph, dann ist $f$ unendlich oft komplex differenzierbar.
+\end{importantbox}
+
+\subsection{1.5 Beispiel mit Ableitungsformel}
+\begin{beispielbox}
+Berechne
+\[
+\int_\gamma \frac{\ee^{3z}}{(z-1)^2}\dd z,
+\qquad \gamma(t)=3\ee^{2\pi\ii t}.
+\]
+\end{beispielbox}
+Hier ist $z_0=1$ und $n=1$, $f(z)=\ee^{3z}$. Daher
+\[
+\int_\gamma \frac{f(z)}{(z-1)^2}\dd z=\frac{2\pi\ii}{1!}f'(1)
+=2\pi\ii\cdot3\ee^3=6\pi\ii\ee^3.
+\]
+
+\subsection{1.6 Frage mit $\ee^{-2/z}$}
+\begin{fragebox}
+Was ist
+\[
+\int_\gamma \frac{\ee^{-2/z}}{(z+3\ii)^2}\dd z,
+\qquad \gamma(t)=4\ee^{2\pi\ii t}?
+\]
+\end{fragebox}
+\begin{antwortbox}
+Hier ist $z_0=-3\ii$ und $n=1$. Setze $f(z)=\ee^{-2/z}$. Dann
+\[
+\int_\gamma \frac{f(z)}{(z+3\ii)^2}\dd z=2\pi\ii f'(-3\ii).
+\]
+Da
+\[
+f'(z)=\ee^{-2/z}\cdot\frac{2}{z^2},
+\]
+folgt
+\[
+2\pi\ii\cdot \ee^{-2/(-3\ii)}\cdot\frac{2}{(-3\ii)^2}.
+\]
+\end{antwortbox}
+
+\subsection{1.7 Mittelwertsatz aus der Cauchy-Formel}
+Für einen Kreis $\gamma(t)=z_0+R\ee^{2\pi\ii t}$ ergibt die Cauchy-Formel den Mittelwertsatz:
+\begin{importantbox}
+\[
+f(z_0)=\int_0^1 f\bigl(z_0+R\ee^{2\pi\ii t}\bigr)\dd t.
+\]
+\end{importantbox}
+Dieser Satz wird häufig für Beweise verwendet.
+
+\subsection{1.8 Maximum-Modulus-Prinzip}
+Aus dem Mittelwertsatz folgt:
+\begin{importantbox}
+Ist $f$ holomorph auf $U$, $U$ offen und wegzusammenhängend, dann hat $|f|$ kein Maximum im Inneren von $U$, außer $f$ ist konstant. Das Maximum von $|f|$ liegt auf dem Rand von $U$.
+\end{importantbox}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.9]
+  \draw[axis] (-1,0)--(5,0) node[right] {$\Re$};
+  \draw[axis] (0,-1)--(0,4) node[above] {$\Im$};
+  \filldraw[blue!20,draw=blue!70!black,thick] (2,2) .. controls (1.3,3) and (3.3,3.6) .. (3.8,2.5) .. controls (4.2,1.2) and (2.1,0.8) .. (1.3,1.5) .. controls (0.8,2) and (1.3,2.7) .. cycle;
+  \fill (3.5,2.3) circle (2pt) node[right] {$\max |f(z)|$ auf dem Rand};
+  \node at (2.5,3.5) {$U$};
+\end{tikzpicture}
+\end{center}
+
+\begin{beispielbox}
+Sei $U=B(0,1)$ und $f(z)=\cos z$. Dann liegt das Maximum von $|\cos z|$ auf dem Einheitskreis.
+\end{beispielbox}
+
+% =========================================================
+\section{Woche 8: Reihen}
+
+\subsection{1.1 Taylorreihe}
+Die reelle Taylorreihe ist bekannt:
+\[
+f(x)=\sum_{n=0}^{\infty}\frac{f^{(n)}(x_0)}{n!}(x-x_0)^n,
+\]
+falls $f$ unendlich oft differenzierbar ist.
+
+Im Komplexen ist es ähnlich:
+\begin{importantbox}
+Ist $f$ holomorph, dann gilt
+\[
+f(z)=\sum_{n=0}^{\infty}\frac{f^{(n)}(z_0)}{n!}(z-z_0)^n.
+\]
+Holomorphie reicht, da holomorph impliziert: unendlich oft komplex differenzierbar.
+\end{importantbox}
+
+\subsection{1.2 Geometrische Reihe}
+Wir benutzen häufig
+\begin{importantbox}
+\[
+\frac1{1-z}=\sum_{n=0}^{\infty}z^n,
+\qquad |z|<1.
+\]
+\end{importantbox}
+Der Gedanke ist: Statt $z$ darf man auch einen Ausdruck $f(z)$ einsetzen:
+\[
+\frac1{1-f(z)}=\sum_{n=0}^{\infty}(f(z))^n,
+\qquad |f(z)|<1.
+\]
+
+\subsection{1.3 Reihenentwicklung durch Umformen}
+Praktisch entwickelt man viele Funktionen, indem man sie so umformt, dass die geometrische Reihe direkt anwendbar ist.
+
+\begin{beispielbox}
+Entwickle
+\[
+\frac1{1+z}
+\]
+um den Punkt $z_0=0$.
+\end{beispielbox}
+\[
+\frac1{1+z}=\frac1{1-(-z)}=\sum_{n=0}^{\infty}(-z)^n
+=\sum_{n=0}^{\infty}(-1)^nz^n,
+\qquad |z|<1.
+\]
+Der Ausdruck $(z-z_0)^n$ zeigt, um welchen Punkt entwickelt wird.
+
+Nun um $z_0=1$:
+\[
+\frac1{1+z}=\frac1{1+(z-1)+1}=\frac1{2+(z-1)}
+=\frac12\frac1{1+\frac{z-1}{2}}.
+\]
+Daher
+\[
+\frac1{1+z}=\frac12\sum_{n=0}^{\infty}\left(-\frac{z-1}{2}\right)^n
+=\sum_{n=0}^{\infty}\frac{(-1)^n}{2^{n+1}}(z-1)^n,
+\]
+mit Konvergenzbedingung $|z-1|<2$.
+
+\begin{importantbox}
+Allgemein:
+\[
+\frac1{z+a}=\frac1{a+z_0}\cdot\frac1{1+\frac{z-z_0}{a+z_0}},
+\]
+und dann wird die geometrische Reihe verwendet.
+\end{importantbox}
+
+% =========================================================
+\section{Woche 9: Reihen und Residuum}
+
+\subsection{1.1 Taylorkoeffizienten und Problem}
+Für Taylorreihen gilt:
+\[
+f(z)=\sum_{n=0}^{\infty}\frac{f^{(n)}(z_0)}{n!}(z-z_0)^n
+=\sum_{n=0}^{\infty}a_n(z-z_0)^n.
+\]
+Außerdem gilt nach der Cauchy-Formel:
+\[
+f^{(n)}(z_0)=\frac{n!}{2\pi\ii}\int_\gamma\frac{f(z)}{(z-z_0)^{n+1}}\dd z.
+\]
+Daher
+\begin{importantbox}
+\[
+a_n=\frac{1}{n!}f^{(n)}(z_0)
+=\frac1{2\pi\ii}\int_\gamma\frac{f(z)}{(z-z_0)^{n+1}}\dd z.
+\]
+\end{importantbox}
+Problem: Diese Darstellung gilt nur auf einer Kreisscheibe, auf der $f$ holomorph ist.
+
+\subsection{1.2 Laurent-Reihe}
+Die Lösung ist, auch negative Potenzen zuzulassen. Dann gilt die Reihe auf einem Ring.
+
+\begin{importantbox}
+Die Laurent-Reihe um $z_0$ lautet
+\[
+f(z)=\sum_{n=-\infty}^{\infty}c_n(z-z_0)^n,
+\qquad
+c_n=\frac1{2\pi\ii}\int_\gamma\frac{f(z)}{(z-z_0)^{n+1}}\dd z.
+\]
+\end{importantbox}
+Wenn wir $c_n$ kennen, kennen wir auch Integrale. Insbesondere
+\begin{importantbox}
+\[
+\int_\gamma f(z)\dd z=2\pi\ii\,c_{-1}.
+\]
+\end{importantbox}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.95]
+  \draw[axis] (-2.5,0)--(2.5,0) node[right] {$\Re$};
+  \draw[axis] (0,-2.5)--(0,2.5) node[above] {$\Im$};
+  \fill[red!15] (0,0) circle (1.8);
+  \fill[white] (0,0) circle (0.8);
+  \draw[red!60!black,thick] (0,0) circle (1.8);
+  \draw[red!60!black,thick] (0,0) circle (0.8);
+  \node at (1.35,1.35) {Ring};
+\end{tikzpicture}
+\end{center}
+
+\subsection{1.3 Beispiel: Integral von $\ee^{1/z}$}
+\begin{beispielbox}
+Berechne
+\[
+\int_\gamma \ee^{1/z}\dd z,
+\qquad \gamma(t)=\ee^{2\pi\ii t}.
+\]
+\end{beispielbox}
+\[
+\ee^{1/z}=\sum_{n=0}^{\infty}\frac{1}{n!z^n}
+=1+\frac1z+\frac1{2z^2}+\cdots.
+\]
+Der Koeffizient $c_{-1}$ ist $1$. Also
+\[
+\int_\gamma \ee^{1/z}\dd z=2\pi\ii.
+\]
+Bemerkung: $\ee^{1/z}$ ist auf dem Ring $\C\setminus\{0\}$ definiert; daher wird die Laurent-Reihe verwendet.
+
+\subsection{1.4 Frage}
+\begin{fragebox}
+Was ergibt
+\[
+\int_\gamma \ee^{1/z^2}\dd z?
+\]
+\end{fragebox}
+\begin{antwortbox}
+\[
+\ee^{1/z^2}=\sum_{n=0}^{\infty}\frac1{n!z^{2n}}
+=1+\frac1{z^2}+\frac1{2z^4}+\cdots.
+\]
+Es gibt keinen $z^{-1}$-Term, also ist $c_{-1}=0$ und
+\[
+\int_\gamma \ee^{1/z^2}\dd z=0.
+\]
+\end{antwortbox}
+
+\subsection{1.5 Residuum}
+\begin{importantbox}
+Der Koeffizient $c_{-1}$ ist so besonders, dass er einen eigenen Namen hat:
+\[
+c_{-1}=\Res(f,z_0).
+\]
+\end{importantbox}
+
+\subsection{1.6 Laurent-Reihe von $\ee^{1/z}/z$}
+\begin{fragebox}
+Was ist die Laurent-Reihe von
+\[
+f(z)=\frac{\ee^{1/z}}{z}?
+\]
+Was ist
+\[
+\int_\gamma f(z)\dd z,
+\qquad \gamma(t)=\ee^{2\pi\ii t}?
+\]
+\end{fragebox}
+\begin{antwortbox}
+\[
+\frac{\ee^{1/z}}{z}=\frac1z\sum_{n=0}^{\infty}\frac1{n!z^n}
+=\sum_{n=0}^{\infty}\frac1{n!}z^{-(n+1)}.
+\]
+Der Koeffizient von $z^{-1}$ ist $1$, also
+\[
+\int_\gamma f(z)\dd z=2\pi\ii.
+\]
+\end{antwortbox}
+
+\subsection{1.7 Arten von Singularitäten}
+Sei
+\[
+f(z)=\sum_{n=-\infty}^{\infty}c_n(z-z_0)^n.
+\]
+Dann gibt es drei Arten von isolierten Singularitäten:
+\begin{enumerate}[label=\Roman*.]
+\item Wesentlich: $c_n\neq0$ für unendlich viele negative $n$; Beispiel $\sin(1/z)$.
+\item Pol der Ordnung $m$: $c_{-m}\neq0$ und $c_n=0$ für alle $n<-m$; Beispiel $1/z^3$ hat Polordnung $3$ bei $0$.
+\item Hebbar: $c_n=0$ für alle $n<0$; dann kann die Funktion fortgesetzt werden.
+\end{enumerate}
+
+\subsection{1.8 Singularitäten bestimmen}
+\begin{fragebox}
+Bestimme die Singularitäten und deren Art von
+\[
+f(z)=\frac{\cos(3/z)\sin(z-1)}{(z-4)(z^2+1)(z-1)}.
+\]
+\end{fragebox}
+\begin{kochrezeptbox}
+\begin{enumerate}[label=\Roman*.]
+\item Alle möglichen Problemstellen aus Nenner und Funktionsausdrücken sammeln.
+\item Prüfen, ob sich Faktoren kürzen oder Grenzwerte endlich sind.
+\item Nach wesentlicher Singularität, Pol oder hebbarer Singularität klassifizieren.
+\end{enumerate}
+\end{kochrezeptbox}
+\begin{antwortbox}
+Die möglichen Problemstellen kommen aus dem Nenner und aus dem Term $\cos(3/z)$:
+\[
+z=0,\qquad z=4,\qquad z=\ii,\qquad z=-\ii,\qquad z=1.
+\]
+Bei $z=0$ liegt wegen $\cos(3/z)$ eine wesentliche Singularität vor. Bei $z=4$, $z=\ii$ und $z=-\ii$ liegen einfache Pole vor, da dort jeweils eine einfache Nullstelle des Nenners steht und der Zähler im Allgemeinen nicht verschwindet. Bei $z=1$ heben sich $\sin(z-1)$ und $(z-1)$ gegenseitig auf, denn
+\[
+\lim_{z\to1}\frac{\sin(z-1)}{z-1}=1.
+\]
+Daher ist $z=1$ eine hebbare Singularität.
+\end{antwortbox}
+
+\subsection{1.9 Laurent-Reihe auf einem Ring}
+Die Laurent-Reihe gilt nur auf einem Ring. Will man $f$ auf unterschiedlichen Bereichen darstellen, braucht man separate Reihen pro Teilgebiet.
+
+\begin{beispielbox}
+Für
+\[
+f(z)=\frac1{(z-1)(z-4)}
+\]
+werden die Bereiche
+\[
+I: |z|<1,
+\qquad II: 1<|z|<4,
+\qquad III: |z|>4
+\]
+betrachtet.
+\end{beispielbox}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.85]
+  \draw[axis] (-1.5,0)--(5.3,0) node[right] {$\Re$};
+  \draw[axis] (0,-2.3)--(0,2.3) node[above] {$\Im$};
+  \draw[blue] (0,0) circle (1);
+  \draw[blue] (0,0) circle (4);
+  \fill (1,0) circle (2pt) node[below] {$1$};
+  \fill (4,0) circle (2pt) node[below] {$4$};
+  \node at (0.4,0.4) {I};
+  \node at (2.4,1.2) {II};
+  \node at (4.5,1.8) {III};
+\end{tikzpicture}
+\end{center}
+
+\subsection{2.1 Laurent-Reihe im Gebiet I}
+\begin{fragebox}
+Bestimme die Laurent-Reihe von $f$ im Gebiet I, also $|z|<1$.
+\end{fragebox}
+\begin{antwortbox}
+Partialbruchzerlegung:
+\[
+\frac1{(z-1)(z-4)}=\frac{A}{z-1}+\frac{B}{z-4}
+=-\frac1{3}\frac1{z-1}+\frac1{3}\frac1{z-4}.
+\]
+Für $|z|<1$:
+\[
+\frac1{z-1}=-\frac1{1-z}=-\sum_{n=0}^{\infty}z^n,
+\]
+\[
+\frac1{z-4}=-\frac14\frac1{1-z/4}=-\frac14\sum_{n=0}^{\infty}\left(\frac z4\right)^n.
+\]
+Zusammen ergibt sich eine Taylor-/Laurent-Reihe um $0$ im Bereich $|z|<1$.
+\end{antwortbox}
+
+% =========================================================
+\section{Woche 10: Residuensatz}
+
+\subsection{1.1 Mehrere Singularitäten}
+Wenn $f$ mehrere isolierte Singularitäten innerhalb einer geschlossenen Kurve besitzt, summiert man die Beiträge.
+
+\begin{importantbox}
+Residuensatz:
+\[
+\int_\gamma f(z)\dd z=2\pi\ii\sum_{j=1}^{n}\Res(f,z_j),
+\]
+wobei die Singularitäten $z_1,\ldots,z_n$ von $\gamma$ umschlossen werden.
+\end{importantbox}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.9]
+  \draw[axis] (-0.5,0)--(5.2,0) node[right] {$\Re$};
+  \draw[axis] (0,-1.5)--(0,2.5) node[above] {$\Im$};
+  \draw[blue,thick,patharrow] (1,0.5) .. controls (1.2,2) and (3.4,2.3) .. (4.2,1.1) .. controls (5,-0.3) and (2.7,-1) .. (1.2,-0.5) .. controls (0.4,-0.1) and (0.5,0.7) .. cycle;
+  \draw[purple,patharrow] (1.7,0.5) circle (0.45);
+  \draw[purple,patharrow] (2.6,0.7) circle (0.45);
+  \fill (1.7,0.5) circle (2pt) node[left] {$z_0$};
+  \fill (2.6,0.7) circle (2pt) node[right] {$z_1$};
+\end{tikzpicture}
+\end{center}
+
+\subsection{1.2 Windungszahl}
+Genauer gilt:
+\begin{importantbox}
+\[
+\int_\gamma f(z)\dd z=2\pi\ii\sum_j W(\gamma,z_j)\Res(f,z_j).
+\]
+\end{importantbox}
+Die Windungszahl $W(\gamma,z_j)$ sagt, ob $z_j$ positiv, also gegen den Uhrzeigersinn, oder negativ, also im Uhrzeigersinn, und wie oft umschlossen wird.
+
+\subsection{1.3 Beispiel Windungszahl}
+Eine Kurve, die einen Punkt zweimal im Uhrzeigersinn umläuft, hat Windungszahl $-2$.
+
+\subsection{1.4 Windungszahlen bestimmen}
+\begin{fragebox}
+Bestimme die Windungszahlen für die gezeichneten Kurven und Punkte.
+\end{fragebox}
+\begin{antwortbox}
+Die Ergebnisse lauten:
+\begin{enumerate}[label=\alph*)]
+\item Ein Punkt wird einmal im Uhrzeigersinn umlaufen: $W(\gamma,z_0)=-1$.
+\item Zwei Punkte: $W(\gamma,z_0)=0$, $W(\gamma,z_1)=-1$.
+\item Ein Punkt wird zweimal gegen den Uhrzeigersinn umlaufen: $W(\gamma,z_0)=2$.
+\end{enumerate}
+\end{antwortbox}
+
+\subsection{1.5 Beispiel mit Residuensatz}
+\begin{beispielbox}
+Bestimme
+\[
+\int_\gamma \frac{1}{z^2-2z}\dd z
+\]
+für die gezeichnete komplizierte Kurve.
+\end{beispielbox}
+\begin{kochrezeptbox}
+\begin{enumerate}[label=\Roman*.]
+\item Bestimmen, welche Singularitäten innerhalb von $\gamma$ liegen und welche Ordnung sie haben.
+\item Windungszahlen der Kurve um alle relevanten Singularitäten bestimmen.
+\item Für jede Singularität das Residuum berechnen.
+\item Residuensatz mit Windungszahlen anwenden.
+\end{enumerate}
+\end{kochrezeptbox}
+Die Singularitäten sind
+\[
+\frac1{z(z-2)},
+\]
+also bei $z_0=0$ und $z_1=2$, beide von Ordnung $1$.
+Die Windungszahlen aus der Zeichnung sind
+\[
+W(\gamma,0)=2,
+\qquad W(\gamma,2)=1.
+\]
+Für einfache Pole gilt:
+\begin{importantbox}
+Wenn
+\[
+f(z)=\frac{\varphi(z)}{(z-z_j)^m},
+\]
+wobei $\varphi$ holomorph bei $z_j$ ist, dann
+\[
+\Res(f,z_j)=\frac{\varphi^{(m-1)}(z_j)}{(m-1)!}.
+\]
+Für $m=1$ ist $\Res(f,z_j)=\varphi(z_j)$.
+\end{importantbox}
+
+Hier:
+\[
+\Res(f,0)=\lim_{z\to0}\frac{z}{z(z-2)}=-\frac12,
+\]
+\[
+\Res(f,2)=\lim_{z\to2}\frac{z-2}{z(z-2)}=\frac12.
+\]
+Also
+\[
+\int_\gamma f(z)\dd z
+=2\pi\ii\left(2\cdot\left(-\frac12\right)+1\cdot\frac12\right)
+=-\pi\ii.
+\]
+
+\subsection{1.6 Beispiel mit Laurent-Reihe}
+\begin{beispielbox}
+Berechne
+\[
+\int_\gamma \frac{\sin(1/z)}{z^2}\dd z.
+\]
+\end{beispielbox}
+Hier erkennt man nicht sofort einen Pol endlicher Ordnung bei $0$. Man entwickelt:
+\[
+\sin(1/z)=\frac1z-\frac1{3!z^3}+\frac1{5!z^5}-\cdots.
+\]
+Dann
+\[
+\frac{\sin(1/z)}{z^2}=\frac1{z^3}-\frac1{3!z^5}+\frac1{5!z^7}-\cdots.
+\]
+Es gibt keinen $z^{-1}$-Term, also $\Res(f,0)=0$ und das Integral ist $0$.
+
+\subsection{1.7 Residuenfrage}
+\begin{fragebox}
+Was ist $\Res(f,0)$ für
+\[
+f(z)=\frac{z^2\sin z}{z}\,?
+\]
+Was ist $\Res(f,2)$ für
+\[
+f(z)=\frac{\ee^z}{z-2}?
+\]
+\end{fragebox}
+\begin{tippbox}
+Führe die Schritte I und III des Kochrezepts aus: Art der Singularität erkennen und dann das Residuum berechnen.
+\end{tippbox}
+\begin{antwortbox}
+Für das erste Beispiel wird per Laurent-/Taylorentwicklung geprüft, ob ein $z^{-1}$-Term auftritt. Da $z\sin z$ holomorph ist, ist $\Res(f,0)=0$.
+
+Für das zweite Beispiel liegt ein einfacher Pol bei $z=2$ vor:
+\[
+\Res\left(\frac{\ee^z}{z-2},2\right)=\ee^2.
+\]
+\end{antwortbox}
+
+\subsection{1.8 Identitätssatz}
+\begin{importantbox}
+Falls $f$ holomorph ist auf $U$ und $f(z)=0$ auf einer offenen Teilmenge oder auf einer Menge mit Häufungspunkt in $U$, dann gilt $f(z)=0$ überall auf $U$.
+\end{importantbox}
+Daraus folgt: Falls $f$ und $g$ holomorph sind und $f(z)=g(z)$ auf einer solchen Menge gilt, dann gilt $f=g$ auf $U$.
+
+\subsection{1.9 Beispiel Identitätssatz}
+Wir wissen, dass
+\[
+\sin^2 x+\cos^2 x=1
+\]
+für alle reellen $x$. Da beide Seiten holomorphe Funktionen sind, gilt die Identität auch im Komplexen:
+\[
+\sin^2 z+\cos^2 z=1.
+\]
+
+% =========================================================
+\section{Woche 11: Anwendung auf reelle Integrale}
+
+\subsection{Idee}
+Die zentrale Idee ist:
+\begin{center}
+reelles Integral $\longrightarrow$ komplexer Raum $\longrightarrow$ Residuensatz $\longrightarrow$ zurück in den reellen Raum.
+\end{center}
+
+\subsection{1.1 Erster Fall: Integrale über $[0,2\pi]$}
+Wir betrachten Integrale der Form
+\[
+\int_0^{2\pi}F(\cos t,\sin t)\dd t.
+\]
+Substituiere
+\begin{importantbox}
+\[
+z=\ee^{\ii t},
+\qquad
+\dd z=\ii\ee^{\ii t}\dd t=\ii z\dd t,
+\qquad
+\cos t=\frac{z+z^{-1}}{2},
+\qquad
+\sin t=\frac{z-z^{-1}}{2\ii}.
+\]
+\end{importantbox}
+
+\begin{beispielbox}
+Bestimme
+\[
+\int_0^{2\pi}\frac1{5-4\cos t}\dd t.
+\]
+\end{beispielbox}
+\begin{kochrezeptbox}
+\begin{enumerate}[label=\Roman*.]
+\item Substituiere $z=\ee^{\ii t}$ und ersetze $\cos t$, $\sin t$ sowie $\dd t$.
+\item Bestimme alle Singularitäten der entstehenden Funktion und prüfe, welche im Einheitskreis liegen.
+\item Berechne die Residuen der Singularitäten im Einheitskreis.
+\item Wende den Residuensatz an und vereinfache das Ergebnis.
+\end{enumerate}
+\end{kochrezeptbox}
+Nach Substitution erhält man ein Kurvenintegral über den Einheitskreis. Die Singularitäten ergeben sich aus
+\[
+-2\ii z^2+5\ii z-2\ii=0
+\quad\Longleftrightarrow\quad
+z^2-\frac52z+1=0.
+\]
+Daraus
+\[
+z_1=\frac12,
+\qquad z_2=2.
+\]
+Nur $z_1=1/2$ liegt im Einheitskreis. Der Residuensatz liefert
+\[
+\int_0^{2\pi}\frac1{5-4\cos t}\dd t=\frac{2\pi}{3}.
+\]
+
+\subsection{1.2 Frage}
+\begin{fragebox}
+Was ergibt
+\[
+\int_0^{2\pi}\frac{3}{5\sin t+3}\dd t?
+\]
+\end{fragebox}
+\begin{antwortbox}
+Zuerst muss geprüft werden, ob das reelle Integral überhaupt existiert. Da
+\[
+5\sin t+3=0
+\quad\Longleftrightarrow\quad
+\sin t=-\frac35
+\]
+für zwei Werte $t\in[0,2\pi]$ erfüllt ist, hat der Integrand im Integrationsintervall Polstellen. Das uneigentliche reelle Integral existiert daher nicht im gewöhnlichen Sinn.
+
+Die formale Substitution $z=\ee^{\ii t}$ führt auf Pole bei
+\[
+z_1=\ii(-3+2\sqrt2),
+\qquad
+z_2=\ii(-3-2\sqrt2),
+\]
+wobei nur $z_1$ im Einheitskreis liegt. Diese Rechnung ist jedoch nur mit zusätzlicher Interpretation, etwa als Hauptwert mit geeigneter Konturbehandlung, sinnvoll. Für das gewöhnliche reelle Integral ist die korrekte Aussage: Es divergiert.
+\end{antwortbox}
+
+\subsection{1.3 Zweiter Fall: Integrale über $\R$}
+Für Integrale
+\[
+\int_{-\infty}^{\infty}f(t)\dd t
+\]
+verwendet man den oberen Halbkreis $\gamma_R$.
+
+\begin{center}
+\begin{tikzpicture}[scale=0.85]
+  \draw[axis] (-3.8,0)--(3.8,0) node[right] {$\Re$};
+  \draw[axis] (0,-0.5)--(0,3.5) node[above] {$\Im$};
+  \draw[blue,thick,patharrow] (-3,0) arc (180:0:3);
+  \draw[green!60!black,thick,->] (-3,0)--(3,0) node[midway,below] {$\gamma_R^-$};
+  \fill (1.2,1.5) circle (2pt) node[right] {$z_1$};
+  \fill (-1.0,1.1) circle (2pt) node[left] {$z_2$};
+  \node at (3,-0.25) {$R$};
+  \node at (-3,-0.25) {$-R$};
+\end{tikzpicture}
+\end{center}
+
+Wenn $f=p/q$ rational ist, $\deg q\ge \deg p+2$, $q$ keine reellen Nullstellen hat und $f$ beschränkt ist, dann verschwindet der Anteil über dem Halbkreis im Grenzwert $R\to\infty$ und
+\begin{importantbox}
+\[
+\int_{-\infty}^{\infty}f(t)\dd t=2\pi\ii\sum_{\Imm z_j>0}\Res(f,z_j).
+\]
+\end{importantbox}
+
+\subsection{1.4 Beispiel}
+\begin{beispielbox}
+Bestimme
+\[
+\int_{-\infty}^{\infty}\frac{\ee^{\ii t}}{t^2-6\ii t+13}\dd t.
+\]
+\end{beispielbox}
+\begin{kochrezeptbox}
+\begin{enumerate}[label=\Roman*.]
+\item Prüfe, ob der Halbkreis-Trick anwendbar ist: keine reellen Pole und ausreichendes Abklingen.
+\item Bestimme die Pole in der oberen Halbebene.
+\item Berechne die Residuen an diesen Polen.
+\item Wende den Residuensatz an. Der Halbkreisanteil verschwindet im Grenzwert.
+\end{enumerate}
+\end{kochrezeptbox}
+Die Pole sind
+\[
+z_1=3+2\ii,
+\qquad z_2=3-2\ii.
+\]
+Nur $z_1$ liegt in der oberen Halbebene. Es gilt
+\[
+\Res(f,z_1)=\lim_{z\to z_1}(z-z_1)\frac{\ee^{\ii z}}{(z-z_1)(z-z_2)}
+=\frac{\ee^{\ii(3+2\ii)}}{(3+2\ii)-(3-2\ii)}
+=\frac{\ee^{-2+3\ii}}{4\ii}.
+\]
+Daher
+\[
+\int_{-\infty}^{\infty}\frac{\ee^{\ii t}}{t^2-6\ii t+13}\dd t
+=2\pi\ii\frac{\ee^{-2+3\ii}}{4\ii}
+=\frac{\pi}{2}\ee^{-2}(\cos3+\ii\sin3).
+\]
+
+\subsection{1.5 Real- und Imaginärteil}
+\begin{fragebox}
+Was ergibt
+\[
+\int_{-\infty}^{\infty}\frac{\cos(5t)}{t^2-6\ii t+13}\dd t?
+\]
+Was ergibt
+\[
+\int_{-\infty}^{\infty}\frac{\sin(5t)}{t^2-6\ii t+13}\dd t?
+\]
+\end{fragebox}
+\begin{antwortbox}
+Man berechnet zunächst das Integral mit $\ee^{\ii 5t}$ und nimmt danach Real- bzw. Imaginärteil:
+\[
+\int_{-\infty}^{\infty}\frac{\cos(5t)}{t^2-6\ii t+13}\dd t
+=\Ree\left(\int_{-\infty}^{\infty}\frac{\ee^{\ii5t}}{t^2-6\ii t+13}\dd t\right),
+\]
+\[
+\int_{-\infty}^{\infty}\frac{\sin(5t)}{t^2-6\ii t+13}\dd t
+=\Imm\left(\int_{-\infty}^{\infty}\frac{\ee^{\ii5t}}{t^2-6\ii t+13}\dd t\right).
+\]
+Aus der Rechnung ergibt sich entsprechend ein Faktor
+\[
+\frac{\pi}{2}\ee^{-10}\cos(15)
+\quad\text{bzw.}\quad
+\frac{\pi}{2}\ee^{-10}\sin(15).
+\]
+\end{antwortbox}
+
+\subsection{1.6 Abschätzung des Halbkreisanteils}
+\begin{fragebox}
+Was ist die obere Abschätzung von
+\[
+\left|\int_{\gamma_R}\frac{\ee^{\ii z}}{z^2-6\ii z+13}\dd z\right|?
+\]
+\end{fragebox}
+\begin{antwortbox}
+Auf dem oberen Halbkreis gilt $|\ee^{\ii z}|\le1$. Außerdem ist
+\[
+|z^2-6\ii z+13|\ge R^2-6R+13.
+\]
+Die Länge des Halbkreises ist $\pi R$. Also
+\[
+\left|\int_{\gamma_R}\frac{\ee^{\ii z}}{z^2-6\ii z+13}\dd z\right|
+\le \frac{\pi R}{R^2-6R+13}\xrightarrow{R\to\infty}0.
+\]
+\end{antwortbox}
+
+\subsection{1.7 Anschauliche Einführung in Fourier-Analyse}
+Differenzierbare Funktionen kann man als Taylorreihe schreiben:
+\[
+f(x)=\sum_{n=0}^{\infty}a_nx^n.
+\]
+Dabei sind $1,x,x^2,\ldots$ die Basisfunktionen.
+
+Wenn $f$ periodisch ist, wählt man eine periodische Basis:
+\[
+f(t)=\frac{a_0}{2}+\sum_{n=1}^{\infty}a_n\cos\left(\frac{n\pi t}{L}\right)+b_n\sin\left(\frac{n\pi t}{L}\right).
+\]
+Die Koeffizienten beschreiben, wie stark die Frequenz $n\pi/L$ in $f$ vorkommt.
+
+\subsection{1.8 Signalübertragung}
+Statt das ganze Signal zu senden, kann man die ersten paar Koeffizienten übertragen. Das funktioniert, wenn die Reihe schnell konvergiert.
+
+\subsection{1.9 Approximation}
+Da die Reihe schnell konvergiert, kann man damit Funktionen gut approximieren. Man wählt den Definitionsbereich als Periode und kann so auch nichtperiodische Funktionen periodisch approximieren.
+
+\subsection{2.1 Differentialgleichungen lösen}
+Man kann Differentialgleichungen lösen, indem man etwa für $\cos t$ die allgemeine Lösung als Fourierreihe ansetzt:
+\[
+\sum a_n\cos(nt)
+\]
+und Koeffizienten vergleicht.
+
+% =========================================================
+\section{Woche 12: Fourier-Analysis}
+
+\subsection{Einführung}
+In der linearen Algebra schreibt man einen Vektor als Linearkombination von Basisvektoren:
+\[
+\binom34=a\binom10+b\binom01.
+\]
+Die Koeffizienten findet man über das Skalarprodukt.
+
+Statt Vektoren betrachten wir jetzt Funktionen. Funktionen bestehen aus Linearkombinationen von Basisfunktionen.
+
+\subsection{1.1 Fourierreihe}
+Sei $f(t)$ $2L$-periodisch. Dann
+\begin{importantbox}
+\[
+f(t)=\frac{a_0}{2}+\sum_{n=1}^{\infty}a_n\cos\left(\frac{n\pi}{L}t\right)+b_n\sin\left(\frac{n\pi}{L}t\right).
+\]
+\end{importantbox}
+Basisfunktionen sind $\cos(n\pi t/L)$ und $\sin(n\pi t/L)$. Die Koeffizienten $a_n,b_n$ beschreiben, wie viel von der Frequenz $n\pi/L$ in $f$ steckt.
+
+\subsection{1.2 Skalarprodukt und Koeffizienten}
+Für Funktionen lautet das Skalarprodukt
+\[
+\langle f,g\rangle=\int_{-L}^{L}f(t)g(t)\dd t.
+\]
+Wie bei Vektoren nimmt man das Skalarprodukt mit den Basisfunktionen:
+\begin{importantbox}
+\[
+a_n=\frac1L\int_{-L}^{L}f(t)\cos\left(\frac{n\pi}{L}t\right)\dd t,
+\]
+\[
+b_n=\frac1L\int_{-L}^{L}f(t)\sin\left(\frac{n\pi}{L}t\right)\dd t.
+\]
+\end{importantbox}
+
+\subsection{1.3 Komplexe Fourierreihe}
+Wenn man negative $n$ zulässt, kann man die Fourierreihe mit einem Koeffizienten ausdrücken:
+\begin{importantbox}
+\[
+f(t)=\sum_{n=-\infty}^{\infty}c_n\ee^{\ii n\pi t/L},
+\qquad
+c_n=\frac1{2L}\int_{-L}^{L}f(t)\ee^{-\ii n\pi t/L}\dd t.
+\]
+\end{importantbox}
+Die Darstellungen sind verbunden durch
+\[
+c_n=\frac12(a_n-\ii b_n),
+\qquad
+c_{-n}=\frac12(a_n+\ii b_n).
+\]
+
+\subsection{1.4 Gerade und ungerade Funktionen}
+\begin{fragebox}
+Falls $f$ gerade oder ungerade ist, was lässt sich über $a_n$ und $b_n$ sagen?
+\end{fragebox}
+\begin{antwortbox}
+Da $\cos$ gerade und $\sin$ ungerade ist:
+\begin{itemize}
+\item Ist $f$ ungerade, dann $a_n=0$.
+\item Ist $f$ gerade, dann $b_n=0$.
+\end{itemize}
+\end{antwortbox}
+
+\subsection{1.5 Periodische Fortsetzungen}
+Fourierreihen gelten für periodische Funktionen. Falls $f$ nicht periodisch, aber beschränkt auf einem Intervall ist, setzt man $f$ periodisch fort.
+
+\begin{center}
+\begin{tikzpicture}[scale=0.85]
+  \draw[axis] (-0.5,0)--(4,0) node[right] {$t$};
+  \draw[axis] (0,-0.3)--(0,1.8) node[above] {$f(t)$};
+  \draw[blue,thick] (0,1)--(1,1);
+  \node at (0.5,-0.25) {$[0,L]$};
+\end{tikzpicture}
+\end{center}
+Es gibt drei Arten:
+\begin{enumerate}[label=\Roman*.]
+\item $L$-periodische Fortsetzung.
+\item Gerade $2L$-periodische Fortsetzung.
+\item Ungerade $2L$-periodische Fortsetzung.
+\end{enumerate}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.75]
+  \begin{scope}
+    \draw[axis] (-2.5,0)--(3,0) node[right] {$t$}; \draw[axis] (0,-0.3)--(0,1.6) node[above] {$f$};
+    \foreach \k in {-2,-1,0,1,2}{\draw[blue,thick] (\k,1)--(\k+0.7,1);}
+    \node at (0.2,-0.55) {I: $L$-periodisch};
+  \end{scope}
+  \begin{scope}[xshift=7cm]
+    \draw[axis] (-2.5,0)--(3,0) node[right] {$t$}; \draw[axis] (0,-0.3)--(0,1.6) node[above] {$f$};
+    \draw[blue,thick] (-2,1)--(-1.2,1); \draw[blue,thick] (-0.8,1)--(0.8,1); \draw[blue,thick] (1.2,1)--(2,1);
+    \node at (0.2,-0.55) {II: gerade};
+  \end{scope}
+\end{tikzpicture}
+\end{center}
+
+\subsection{1.6 Fortsetzungen zeichnen}
+\begin{fragebox}
+Zeichne die drei Fortsetzungen einer auf $[0,L]$ linearen Funktion.
+\end{fragebox}
+\begin{antwortbox}
+Die drei Skizzen entsprechen: periodische Sägezahnfortsetzung, gerade Dreiecksfortsetzung und ungerade Sägezahnfortsetzung.
+\end{antwortbox}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.7]
+  \begin{scope}
+    \draw[axis] (-2.2,0)--(3,0); \draw[axis] (0,-0.2)--(0,1.7) node[above] {$f$};
+    \foreach \k in {-2,-1,0,1,2}{\draw[blue,thick] (\k,0)--(\k+1,1);}
+    \node at (0.5,-0.5) {periodisch};
+  \end{scope}
+  \begin{scope}[xshift=6cm]
+    \draw[axis] (-2.2,0)--(3,0); \draw[axis] (0,-0.2)--(0,1.7) node[above] {$f$};
+    \draw[blue,thick] (-2,0)--(-1,1)--(0,0)--(1,1)--(2,0);
+    \node at (0.5,-0.5) {gerade};
+  \end{scope}
+  \begin{scope}[yshift=-3.1cm]
+    \draw[axis] (-2.2,0)--(3,0); \draw[axis] (0,-1.3)--(0,1.3) node[above] {$f$};
+    \foreach \k in {-2,-1,0,1,2}{\draw[blue,thick] (\k,0)--(\k+1,1); \draw[blue,thick] (\k,-1)--(\k+1,0);}
+    \node at (0.5,-1.6) {ungerade};
+  \end{scope}
+\end{tikzpicture}
+\end{center}
+
+\subsection{1.7 Beispiel Koeffizienten berechnen}
+\begin{beispielbox}
+Sei $f(x)=x^2+x+2$ auf $[-3\pi,3\pi]$ definiert und mit Periode $6\pi$ fortgesetzt. Bestimme $w$, $a_0$, $a_n$, $b_n$.
+\end{beispielbox}
+\begin{tippbox}
+Nutze Symmetrien der Integrale: Produkte mit $\sin$ bzw. $\cos$ können auf geraden und ungeraden Anteilen vereinfacht werden.
+\end{tippbox}
+Hier ist
+\[
+w=\frac{2\pi}{T}=\frac{2\pi}{6\pi}=\frac13.
+\]
+Außerdem
+\[
+a_0=\frac1L\int_{-L}^{L}f(x)\dd x,
+\qquad L=3\pi.
+\]
+Aus der Rechnung ergibt sich
+\[
+a_0=6\pi^2+4.
+\]
+Weiter
+\[
+a_n=\frac1{3\pi}\int_{-3\pi}^{3\pi}(x^2+x+2)\cos\left(\frac{nx}{3}\right)
+\dd x
+=\frac{36(-1)^n}{n^2},
+\]
+und
+\[
+b_n=\frac1{3\pi}\int_{-3\pi}^{3\pi}(x^2+x+2)\sin\left(\frac{nx}{3}\right)
+\dd x
+=\frac{6(-1)^{n+1}}{n}.
+\]
+
+\subsection{1.8 Diskrete Fouriertransformation}
+Sei
+\[
+f(t)=\sum_{n=-\infty}^{\infty}c_n\ee^{\ii n\pi t/L}.
+\]
+Dann sind die $c_n$ die diskrete Fouriertransformation. Man liegt nicht mehr im Zeitbereich, sondern im Frequenzbereich.
+
+\begin{importantbox}
+$f(t)$ fragt: Wie groß ist $f$ zu einer gegebenen Zeit? \\
+$\widehat f(\omega)$ fragt: Wie groß ist $f$ bei einer gegebenen Frequenz?
+\end{importantbox}
+
+\subsection{1.9 Fouriertransformation}
+Falls $f$ nicht beschränkt ist oder man keine periodische Fortsetzung möchte, nimmt man die Periode im Grenzfall gegen $\infty$. Aus der Summe wird ein Integral und aus diskreten Frequenzen ein kontinuierliches Frequenzspektrum.
+
+\begin{importantbox}
+\[
+f(t)=\frac1{\sqrt{2\pi}}\int_{-\infty}^{\infty}\widehat f(\omega)\ee^{\ii\omega t}\dd\omega,
+\qquad
+\widehat f(\omega)=\frac1{\sqrt{2\pi}}\int_{-\infty}^{\infty}f(t)\ee^{-\ii\omega t}\dd t.
+\]
+\end{importantbox}
+
+% =========================================================
+\section{Woche 13: Fouriertransformation}
+
+\subsection{1.1 Existenz}
+\begin{fragebox}
+Wann existiert eine Fouriertransformation?
+\end{fragebox}
+\begin{antwortbox}
+Das Integral darf nicht gegen unendlich gehen. Die Funktion muss absolut integrierbar sein:
+\[
+\int_{-\infty}^{\infty}|f(t)|\dd t<\infty.
+\]
+\end{antwortbox}
+
+\subsection{1.2 Beispiele zur absoluten Integrierbarkeit}
+\begin{beispielbox}
+\begin{itemize}
+\item $f(t)=\ee^t$ ist nicht absolut integrierbar.
+\item $f(t)=\mathbf 1_{[-1,1]}(t)$ ist absolut integrierbar.
+\item $f(t)=\ee^{-t}\mathbf 1_{t\ge0}$ ist absolut integrierbar.
+\end{itemize}
+\end{beispielbox}
+
+\subsection{1.3 Fouriertransformation von $\ee^{-t}\mathbf 1_{t\ge0}$}
+\begin{beispielbox}
+Berechne die Fouriertransformation von
+\[
+f(t)=\begin{cases}\ee^{-t},&t\ge0,\\0,&\text{sonst.}\end{cases}
+\]
+\end{beispielbox}
+\[
+\widehat f(\omega)=\frac1{\sqrt{2\pi}}\int_0^{\infty}\ee^{-t}\ee^{-\ii\omega t}\dd t
+=\frac1{\sqrt{2\pi}}\int_0^{\infty}\ee^{-(1+\ii\omega)t}\dd t.
+\]
+Da $\Ree(1+\ii\omega)=1>0$, ist
+\[
+\widehat f(\omega)=\frac1{\sqrt{2\pi}}\frac1{1+\ii\omega}.
+\]
+
+\subsection{1.4 Allgemeines Beispiel}
+Für
+\[
+f(t)=\begin{cases}\ee^{-at},&t\ge0,\\0,&\text{sonst,}\end{cases}
+\qquad a>0,
+\]
+gilt
+\begin{importantbox}
+\[
+\widehat f(\omega)=\frac1{\sqrt{2\pi}}\frac1{a+\ii\omega}.
+\]
+\end{importantbox}
+
+\subsection{1.5 Eigenschaften der Fouriertransformation}
+Sei $\mathcal F[f]=\widehat f$. Wichtige Rechenregeln sind:
+\begin{importantbox}
+\begin{enumerate}[label=\arabic*.]
+\item Verschiebung:
+\[
+\mathcal F[f(t-a)](\omega)=\ee^{-\ii\omega a}\widehat f(\omega).
+\]
+\item Modulation:
+\[
+\mathcal F[\ee^{\ii a t}f(t)](\omega)=\widehat f(\omega-a).
+\]
+\item Skalierung:
+\[
+\mathcal F[f(at)](\omega)=\frac1{|a|}\widehat f\left(\frac{\omega}{a}\right).
+\]
+\item Doppelte Fouriertransformation:
+\[
+\mathcal F(\mathcal F(f))=f(-t).
+\]
+\item Ableitungen:
+\[
+\mathcal F[f'](\omega)=\ii\omega\widehat f(\omega),
+\qquad
+\mathcal F[t^nf(t)](\omega)=\ii^n\frac{d^n}{d\omega^n}\widehat f(\omega).
+\]
+\item Wichtig für Verschiebung und Skalierung:
+\[
+\mathcal F[f(a(t-b))](\omega)=\frac1{|a|}\ee^{-\ii\omega b}\widehat f\left(\frac{\omega}{a}\right).
+\]
+\end{enumerate}
+\end{importantbox}
+
+\subsection{1.6 Beispiel mit Verschiebung}
+\begin{beispielbox}
+Sei $f(t)=\ee^{-|t|}$ und
+\[
+\widehat f(\omega)=\frac{2}{1+\omega^2}.
+\]
+Was ist $\mathcal F[\ee^{-|t-2|}]$?
+\end{beispielbox}
+Da $\ee^{-|t-2|}=f(t-2)$, verwendet man die Verschiebungsregel:
+\[
+\mathcal F[f(t-2)](\omega)=\ee^{-2\ii\omega}\frac{2}{1+\omega^2}.
+\]
+
+\subsection{1.7 Frage}
+\begin{fragebox}
+Sei $f(t)=\ee^{-|t|}$ und $\widehat f(\omega)=\frac{2}{1+\omega^2}$. Was ist
+\[
+\mathcal F\left[\ee^{-\left|\frac{t+3}{2}\right|}\right]?
+\]
+\end{fragebox}
+\begin{antwortbox}
+Man schreibt
+\[
+\ee^{-\left|\frac{t+3}{2}\right|}=f\left(\frac{t+3}{2}\right)=f\left(\frac12(t+3)\right).
+\]
+Mit Skalierung und Verschiebung erhält man
+\[
+\mathcal F\left[f\left(\frac{t+3}{2}\right)\right](\omega)
+=2\ee^{3\ii\omega}\widehat f(2\omega)
+=2\ee^{3\ii\omega}\frac{2}{1+4\omega^2}.
+\]
+\end{antwortbox}
+
+\subsection{1.8 Faltung}
+\begin{importantbox}
+Die Faltung ist definiert durch
+\[
+(f*g)(t)=\int_{-\infty}^{\infty}f(t-x)g(x)\dd x
+=\int_{-\infty}^{\infty}f(x)g(t-x)\dd x.
+\]
+\end{importantbox}
+
+\begin{beispielbox}
+Sei
+\[
+f(t)=\begin{cases}1,&t\ge0,\\0,&\text{sonst.}\end{cases}
+\]
+Berechne $(\ee^{-3t}f(t))*f(t)$.
+\end{beispielbox}
+Für $t\ge0$:
+\[
+(\ee^{-3t}f(t))*f(t)=\int_0^t \ee^{-3x}\dd x=\left[-\frac13\ee^{-3x}\right]_0^t=\frac{1-\ee^{-3t}}{3}.
+\]
+Für $t<0$ ist der Wert $0$. Also
+\[
+(\ee^{-3t}f(t))*f(t)=\frac{1-\ee^{-3t}}{3}f(t).
+\]
+Allgemein:
+\begin{importantbox}
+\[
+(\ee^{-at}f(t))*f(t)=\frac{1-\ee^{-at}}{a}f(t).
+\]
+\end{importantbox}
+
+% =========================================================
+\section{Woche 14: Faltung und Laplace-Transformation}
+
+\subsection{1.1 Tiefpassfilter}
+Man möchte ein Zeitsignal $f(t)$ durch einen Tiefpassfilter laufen lassen. Im Frequenzbereich multipliziert man die Fouriertransformation $\mathcal F[f]$ mit
+\[
+\chi_{[-1,1]}(\omega).
+\]
+Hohe Frequenzen werden abgeschnitten:
+\[
+\widehat T(\omega)=\widehat f(\omega)\chi_{[-1,1]}(\omega).
+\]
+Im Zeitbereich entspricht das einer Faltung:
+\[
+T(t)=f*\mathcal F^{-1}[\chi_{[-1,1]}](t).
+\]
+Da
+\[
+\mathcal F^{-1}[\chi_{[-1,1]}](t)=\sqrt{\frac2\pi}\frac{\sin t}{t},
+\]
+erhält man
+\[
+T(t)=f(t)*\sqrt{\frac2\pi}\frac{\sin t}{t}.
+\]
+
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+  \draw[axis] (-3,0)--(3,0) node[right] {$\omega$};
+  \draw[axis] (0,-0.2)--(0,1.6) node[above] {$\chi_{[-1,1]}$};
+  \draw[blue,thick] (-1,0)--(-1,1)--(1,1)--(1,0);
+  \node[below] at (-1,0) {$-1$}; \node[below] at (1,0) {$1$};
+\end{tikzpicture}
+\end{center}
+
+\subsection{1.2 Faltungen in KI}
+Faltungen werden in der KI ständig verwendet. Convolutional Neural Networks benutzen Faltungen als Filter, um Features aus einem Datensatz zu extrahieren.
+
+\subsection{1.3 Differentialgleichung mit Fouriertransformation}
+\begin{fragebox}
+Berechne $\widehat y(\omega)$, wobei
+\[
+-y''(t)+y(t)=\chi_{[-1,1]}(t).
+\]
+\end{fragebox}
+\begin{antwortbox}
+Fouriertransformieren liefert
+\[
+\omega^2\widehat y(\omega)+\widehat y(\omega)=\mathcal F[\chi_{[-1,1]}](\omega).
+\]
+Da
+\[
+\mathcal F[\chi_{[-1,1]}](\omega)=\sqrt{\frac2\pi}\frac{\sin\omega}{\omega},
+\]
+folgt
+\[
+\widehat y(\omega)=\frac{\sqrt{2/\pi}\,\sin\omega}{\omega(1+
+\omega^2)}.
+\]
+\end{antwortbox}
+
+\subsection{1.4 Von Fourier zu Laplace}
+Die Fouriertransformation ist
+\[
+\widehat f(\omega)=\frac1{\sqrt{2\pi}}\int_{-\infty}^{\infty}f(t)\ee^{-\ii\omega t}\dd t.
+\]
+Hier ist $\omega$ reell. Ersetzt man $\omega$ durch eine komplexe Zahl $s=a+\ii b$, erhält man Dämpfungsfaktoren. Für $a>0$ wächst $\ee^{-st}$ bei negativen $t$, für $a<0$ bei positiven $t$. Deshalb integriert man nur über eine Seite, üblicherweise von $0$ bis $\infty$.
+
+\begin{importantbox}
+Die Laplace-Transformation ist
+\[
+\mathcal L[f](s)=\int_0^{\infty}f(t)\ee^{-st}\dd t.
+\]
+\end{importantbox}
+
+\subsection{1.5 Idee der Laplace-Transformation}
+Die Laplace-Transformation ist im Kern eine Fouriertransformation von $f(t)\ee^{-at}$. Man dämpft also $f$, bevor man transformiert. Dadurch kann man viel mehr Funktionen transformieren: $f$ darf höchstens exponentiell wachsen.
+
+Wenn
+\[
+|f(t)|\le Me^{a_0t},
+\]
+dann muss
+\[
+\Ree(s)>a_0
+\]
+gelten, damit genügend gedämpft wird.
+
+\subsection{1.6 Beispiel: Laplace von $\ee^{bt}H(t)$}
+\begin{beispielbox}
+Berechne $\mathcal L[f](s)$ für $f(t)=\ee^{bt}H(t)$.
+\end{beispielbox}
+\[
+\mathcal L[f](s)=\int_0^{\infty}\ee^{bt}\ee^{-st}\dd t
+=\int_0^{\infty}\ee^{-(s-b)t}\dd t
+=\frac1{s-b},
+\qquad \Ree(s)>\Ree(b).
+\]
+
+\subsection{1.7 Nicht transformierbare Funktion}
+$\ee^{t^2}$ kann mit Laplace nicht transformiert werden, weil es schneller als exponentiell wächst.
+
+\subsection{1.8 Beispiel: Rücktransformation}
+\begin{beispielbox}
+Sei
+\[
+f(t)=3+10t-3\cos t+2\sin t.
+\]
+Verwende die Laplace-Tabelle.
+\end{beispielbox}
+Mit
+\[
+\mathcal L[1]=\frac1s,
+\quad
+\mathcal L[t]=\frac1{s^2},
+\quad
+\mathcal L[\cos(at)]=\frac{s}{s^2+a^2},
+\quad
+\mathcal L[\sin(at)]=\frac{a}{s^2+a^2},
+\]
+ergibt sich
+\[
+\mathcal L[f](s)=\frac3s+\frac{10}{s^2}-\frac{3s}{s^2+1}+\frac{2}{s^2+1}.
+\]
+Für rationale Funktionen kann man Partialbruchzerlegung verwenden, um die Rücktransformation abzulesen.
+
+\subsection{1.9 Wichtige Formeln für Laplace}
+Die folgende Tabelle fasst die wichtigsten Transformationen zusammen.
+
+\begin{longtable}{>{\(}l<{\)}>{\(}l<{\)}}
+\toprule
+f(t) & \mathcal L[f](s) \\
+\midrule
+\endhead
+1 & 1/s \\
+t^n & n!/s^{n+1} \\
+\sin(at) & a/(s^2+a^2) \\
+\cos(at) & s/(s^2+a^2) \\
+\ee^{at} & 1/(s-a) \\
+\ee^{at}\sin(bt) & b/((s-a)^2+b^2) \\
+\ee^{at}\cos(bt) & (s-a)/((s-a)^2+b^2) \\
+t^n\ee^{at} & n!/(s-a)^{n+1} \\
+af(t)+bg(t) & a\mathcal L[f](s)+b\mathcal L[g](s) \\
+tf(t) & -\frac{d}{ds}\mathcal L[f](s) \\
+t^nf(t) & (-1)^n\frac{d^n}{ds^n}\mathcal L[f](s) \\
+f'(t) & s\mathcal L[f](s)-f(0) \\
+f''(t) & s^2\mathcal L[f](s)-sf(0)-f'(0) \\
+\ee^{at}f(t) & \mathcal L[f](s-a) \\
+\int_0^t f(\tau)g(t-\tau)\dd\tau & \mathcal L[f](s)\mathcal L[g](s) \\
+\bottomrule
+\end{longtable}
+
+\end{document}

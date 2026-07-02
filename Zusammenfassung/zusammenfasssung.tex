@@ -1,0 +1,945 @@
+\documentclass[a4paper,landscape]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{geometry}
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{tikz}
+\usetikzlibrary{decorations.markings,arrows.meta}
+\usepackage{microtype}
+\usepackage{hyperref}
+
+\geometry{left=5mm,right=5mm,top=5mm,bottom=5mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.8pt}
+\setlist[itemize]{leftmargin=*,nosep}
+\setlist[enumerate]{leftmargin=*,nosep}
+\newcommand{\C}{\mathbb C}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\dd}{\,\mathrm d}
+\newcommand{\ee}{\mathrm e}
+\newcommand{\ii}{\mathrm i}
+\DeclareMathOperator{\Arg}{Arg}
+\DeclareMathOperator{\Log}{Log}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\PV}{P.V.}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\diverg}{div}
+\newcommand{\KR}[1]{\textcolor{purple}{\textbf{#1}}}
+
+\definecolor{themenblau}{RGB}{197,220,235}
+\definecolor{themenrahmen}{RGB}{91,145,181}
+\newcommand{\themenzeile}[1]{%
+  \par\smallskip
+  \begingroup
+  \setlength{\fboxsep}{0.7mm}%
+  \noindent\colorbox{themenrahmen}{%
+    \parbox{\dimexpr\linewidth-2\fboxsep\relax}{\color{white}\bfseries #1}}%
+  \endgroup
+  \par\nobreak\smallskip\nobreak
+}
+\RenewDocumentCommand{\subsection}{s o m}{%
+  \IfBooleanTF{#1}
+    {\themenzeile{\large #3}}
+    {\IfNoValueTF{#2}
+      {\refstepcounter{subsection}\themenzeile{\large\thesubsection\quad #3}}
+      {\refstepcounter{subsection}\themenzeile{\large\thesubsection\quad #3}}}%
+}
+
+\begin{document}
+\fontsize{7.6pt}{8.2pt}\selectfont
+\setlength{\abovedisplayskip}{1.2pt}
+\setlength{\belowdisplayskip}{1.2pt}
+\setlength{\abovedisplayshortskip}{0.5pt}
+\setlength{\belowdisplayshortskip}{0.5pt}
+\setlength{\jot}{1pt}
+\setlength{\columnsep}{4.5mm}
+{\centering\large Mathematische Methoden\par\vspace{1mm}}
+
+\begin{multicols*}{3}
+
+\subsection*{Betrag/Norm}
+\[
+|z|=\sqrt{x^2+y^2}=\sqrt{z\overline z}
+\]
+\[
+\Rightarrow |z_1+z_2|\le |z_1|+|z_2|,\qquad |z_1z_2|=|z_1|\,|z_2|.
+\]
+
+\subsection*{Komplexe Zahl}
+\[
+x+\ii y=r(\cos\varphi+\ii\sin\varphi).
+\]
+\[
+\Rightarrow \Arg z\in[-\pi,\pi],\qquad \text{Bogenlänge: }r\varphi,\qquad \dist(z_1,z_2)=|z_1-z_2|.
+\]
+\[
+\operatorname{Re}(z)=\frac12(z+\overline z),\qquad
+\operatorname{Im}(z)=\frac{1}{2\ii}(z-\overline z).
+\]
+Für $z=x+\ii y\ne0$ gilt
+\[
+\Arg(z)=
+\begin{cases}
+\arccos\left(\dfrac{x}{|z|}\right),& y\ge0,\\[2mm]
+-\arccos\left(\dfrac{x}{|z|}\right),& y<0,
+\end{cases}
+\qquad \Arg(z)\in[-\pi,\pi].
+\]
+
+\subsection*{Konvergenzradius einer Potenzreihe}
+\[
+R=\frac{1}{\limsup\limits_{n\to\infty}\sqrt[n]{|c_n|}}.
+\]
+
+\subsection*{Eulers Formel}
+\[
+\exp(\ii t)=\cos(t)+\ii\sin(t),\qquad \ee^{-\ii\varphi}=\overline{\ee^{\ii\varphi}}.
+\]
+\[
+\ee^z=\lim_{n\to\infty}\left(1+\frac zn\right)^n.
+\]
+
+\subsection*{Logarithmus}
+\[
+\Log(z)=\log|z|+\ii\Arg(z).
+\]
+\[
+\Rightarrow \text{Hauptwert des Logarithmus},\qquad z\ne0.
+\]
+
+\subsection*{$n$-te Wurzel}
+\[
+w=\sqrt[n]{r}\exp\left(\ii\frac{\varphi+2\pi k}{n}\right),\qquad k=0,1,2,\ldots,n-1,
+\]
+\[
+w=\exp\left(\frac1n\log(z)\right),\qquad \log(z)=\Log(z)+2\pi \ii k,
+\]
+\[
+\text{wobei }w^n=z.
+\]
+Falls $w$ eine Wurzel einer reellen Zahl ist, also $w^n=a\in\R$, dann ist auch $\overline w$ eine Lösung.
+
+\subsection*{Fundamentalsatz der Algebra}
+Jedes nicht-konstante Polynom mit komplexen Koeffizienten hat eine Nullstelle in $\C$.
+
+\subsection*{$\C$-differenzierbar}
+\[
+\lim_{z\to z_0}\frac{f(z)-f(z_0)}{z-z_0}\quad\text{existiert},\qquad z_0\in U\text{ offen},
+\]
+\[
+=f'(z_0)\Rightarrow f\text{ ist stetig bei }z_0.
+\]
+Für eine Potenzreihe gilt: gliedweise Differentiation innerhalb des Konvergenzkreises.
+\[
+\text{Strategie: nicht stetig}\Rightarrow\text{ nicht }\C\text{-differenzierbar}.
+\]
+
+\subsection*{Holomorph}
+Sei $f:U\to\C$, holomorph auf $U$.
+\[
+\Leftrightarrow \text{ auf ganz }U\ \C\text{-diff.},\ \text{holomorph in }z_0\in U,
+\]
+\[
+\Leftrightarrow \text{holomorph in offener Menge um }z_0,
+\]
+\[
+\Leftrightarrow \text{beliebig oft diff. und analytisch}.
+\]
+Nichttriviale Abhängigkeit von $\overline z$ ist ein typisches Zeichen für nicht holomorphe Funktionen; z.B.
+\[
+f(z)=(x-\ii y)^2=(\overline z)^2\quad\Rightarrow\quad f\text{ nicht holomorph}.
+\]
+
+\subsection*{Cauchy-Riemann-Gleichungen}
+Sei $f=u(x,y)+\ii v(x,y)$ und
+\[
+\frac{\partial u}{\partial x}=\frac{\partial v}{\partial y},\qquad
+\frac{\partial u}{\partial y}=-\frac{\partial v}{\partial x}.
+\]
+Falls $f'(z)$ in $z_0$ existiert, sind die Gleichungen erfüllt und
+\[
+f'(z_0)=\frac{\partial f}{\partial x}=-\ii\frac{\partial f}{\partial y}.
+\]
+Falls $u_x,u_y,v_x,v_y$ in einer offenen Menge um $z_0$ existieren, stetig in $z_0$ sind und die CRG in $z_0$ erfüllen, gilt: $f'(z_0)$ existiert.
+
+\subsection*{Korollar}
+Sei $f:B(z_0,r)\to\C$ holomorph. Für $z_0\in\C$, $r>0$, dann gilt:
+\begin{enumerate}[label=(\roman*)]
+\item Falls $\operatorname{Re}(f)=u$ konstant, so ist $f$ konstant.
+\item Sei $g:B(z_0,r)\to\C$ auch holomorph und $\operatorname{Re}(f)=\operatorname{Re}(g)$,
+\[
+\Rightarrow f\equiv g+\ii c,\qquad c\in\R.
+\]
+\item Falls $\overline f$ holomorph, so ist $f$ konstant.
+\item Falls $|f(z)|$ konstant, so ist $f(z)$ konstant.
+\end{enumerate}
+
+\subsection*{Korollar: harmonische Funktionen}
+Sei $f:U\to\C$ holomorph. Dann gilt für $f=u+\ii v$:
+\[
+\frac{\partial^2u}{\partial x^2}+\frac{\partial^2u}{\partial y^2}=0,\qquad
+\frac{\partial^2v}{\partial x^2}+\frac{\partial^2v}{\partial y^2}=0.
+\]
+Falls
+\[
+\frac{\partial^2g}{\partial x^2}+\frac{\partial^2g}{\partial y^2}=0,
+\]
+\[
+\Rightarrow g\text{ ist harmonisch}\Leftrightarrow \Delta g=0\quad(\text{Laplace-Operator}).
+\]
+
+\subsection*{Pfad}
+Stetige Abbildung $\gamma:[a,b]\to\C$; einfach, falls injektiv; geschlossen, falls $\gamma(a)=\gamma(b)$; $\gamma'(t_0)$ ist der Tangentialvektor zum Pfad $\gamma$ bei $t_0$.
+Für die gerade Strecke von $a$ nach $b$:
+\[
+\gamma:[0,1]\to\C,
+\qquad \gamma(t)=a+t(b-a).
+\]
+Für einen positiv orientierten Kreis um $z_0$ mit Radius $r$:
+\[
+\gamma(t)=z_0+r\ee^{2\pi\ii t},\qquad t\in[0,1].
+\]
+
+\subsection*{Kurvenintegral}
+\[
+\int_\gamma f(z)\dd z=\int_0^1 f(\gamma(t))\gamma'(t)\dd t,
+\]
+$f:U\to\C$ stetig, $U$ offen, $\gamma:[0,1]\to U$ diff. $\Rightarrow I$ unabhängig von Parametrisierung.
+
+\subsection*{Stammfunktion}
+Sei $U$ offen und wegzusammenhängend, $f:U\to\C$ stetig. Dann ist das Folgende äquivalent:
+\begin{enumerate}[label=(\roman*)]
+\item Sei $\gamma$ geschlossen, so ist $\displaystyle\int_\gamma f\dd z=0$.
+\item $\displaystyle\int_\gamma f(z)\dd z$ ist unabhängig vom Pfad $\gamma$.
+\item Es gibt eine $\C$-diff. Funktion $F:U\to\C$, $F'(z)=f(z)$.
+\end{enumerate}
+\[
+\Rightarrow \int_\gamma f\dd z=F(\gamma(1))-F(\gamma(0)),
+\quad \gamma(0)=\gamma(1)\Rightarrow \int_\gamma f\dd z=0.
+\]
+
+\subsection*{Cauchy'scher Integralsatz}
+Sei $U$ offen und einfach zusammenhängend und $f$ holomorph. Dann besitzt $f$ eine Stammfunktion.
+
+\subsection*{Satz von Green-Gauß}
+Sei $F:U\to\R^2$ ein Vektorfeld, $U$ offen, $V\subset U$ kompakt mit stückweise glattem Rand $\partial V=S$:
+\[
+\Rightarrow \int_V \diverg F(x,y)\dd x\dd y=\int_{\partial V=S} F(s)\cdot n_S(s)\dd s.
+\]
+
+\subsection*{Wegzusammenhängende Mengen}
+Sei $U$ wegzusammenhängend und $f$ stetig, $\gamma$ ein Pfad.
+\begin{enumerate}[label=(\roman*)]
+\item
+\[
+\left|\int_a^b f(\gamma(t))\gamma'(t)\dd t\right|\le
+\int_a^b |f(\gamma(t))\gamma'(t)|\dd t.
+\]
+\item
+\[
+\left|\int_\gamma f(z)\dd z\right|\le ML,
+\]
+falls $|f(z)|\le M$ beschränkt ist und $L=\int_a^b|\gamma'(t)|\dd t$ die Länge von $\gamma$ ist.
+\item Falls $f$ holomorph:
+\[
+\sum_{k=1}^n\int_{\gamma_k}f=\int_\gamma f,
+\qquad
+\int_{\gamma_1}f=\int_{\gamma_2}f.
+\]
+\end{enumerate}
+\begin{center}
+\begin{tikzpicture}[scale=.55]
+  \draw[thick] (0,0) circle (1.2);
+  \draw[thick] (-.45,.25) circle (.25);
+  \draw[thick] (.45,-.25) circle (.25);
+  % äußerer Rand positiv orientiert (gegen den Uhrzeigersinn)
+  \draw[->,thick] (0.21,1.18) arc[start angle=80,end angle=120,radius=1.2];
+  % Ränder der Löcher im Uhrzeigersinn
+  \draw[->,thick] (-.67,.37) arc[start angle=150,end angle=80,radius=.25];
+  \draw[->,thick] (.2335,-.125) arc[start angle=150,end angle=80,radius=.25];
+  % Singularitäten / aus U ausgeschnittene Punkte
+  \node at (-.45,.25) {$\times$};
+  \node at (.45,-.25) {$\times$};
+  \node[anchor=east] at (-1.3,.68) {$z_1\notin U$};
+  \node[anchor=west] at (1.25,-.62) {$z_2\notin U$};
+  \node at (0,-1.72) {Skizze: äußerer Rand positiv, innere Ränder negativ orientiert};
+\end{tikzpicture}\quad
+\begin{tikzpicture}[scale=.55]
+  \draw[thick] (0,0) circle (1.1);
+  \draw[thick] (0,0) circle (.45);
+  \draw[->,thick] (0.19,1.08) arc[start angle=80,end angle=125,radius=1.1];
+  \draw[->,thick] (0.08,.44) arc[start angle=80,end angle=150,radius=.45];
+  \node at (0,0) {$\times$};
+  \node at (0,-1.55) {Skizze: $\gamma_1,\gamma_2$};
+\end{tikzpicture}
+\end{center}
+
+\subsection*{Cauchy'sche Integralformel}
+Sei $U\subset\C$ einfach zusammenhängend, offen und $z_0\in U$, $\gamma:[0,1]\to U\setminus\{z_0\}$, die $z_0$ einmal positiv umläuft, und $f:U\to\C$ holomorph:
+\[
+f(z_0)=\frac{1}{2\pi\ii}\int_\gamma\frac{f(z)}{z-z_0}\dd z.
+\]
+Allgemeiner gilt für $n\ge0$:
+\[
+f^{(n)}(z_0)=\frac{n!}{2\pi\ii}\int_\gamma\frac{f(z)}{(z-z_0)^{n+1}}\dd z.
+\]
+
+\subsection*{Mittelwertsatz}
+$U$ offen, $f$ holomorph, $B(z_0,r)\subset U$, $r>0$, $z_0\in U$:
+\[
+\Rightarrow f(z_0)=\int_0^1 f\bigl(z_0+r\exp(2\pi\ii t)\bigr)\dd t.
+\]
+$f(z_0)$ ist der Mittelwert von $f$ auf $\partial B(z_0,r)$.
+
+\subsection*{Lemma}
+Sei $f$ auf $B(z_0,r)$ holomorph. Falls
+\[
+|f(z)|\le |f(z_0)|\quad\text{für alle }z\in B(z_0,r),
+\]
+\[
+\Rightarrow f(z)=f(z_0)=\text{konstant}.
+\]
+
+\subsection*{Maximums-Modulus-Prinzip}
+Sei $f$ holomorph und nicht konstant auf einer offenen wegzusammenhängenden Menge $U$. Dann besitzt $|f(z)|$ kein Maximum auf $U$.
+\[
+\Rightarrow f\text{ nicht konstant stetig auf }K=\overline U,
+\]
+$K$ kompakt, holomorph auf $U$ $\Rightarrow \max_{z\in K}|f(z)|$ liegt auf dem Rand von $K$.
+
+\subsection*{Satz von Liouville}
+Sei $f:\C\to\C$ ganz. Falls $|f(z)|$ beschränkt, so ist $f$ konstant.
+
+\subsection*{Reihen-Entwicklung}
+Sei $f:B(z_0,R_0)\to\C$ holomorph, $R_0>0$. Dann hat $f$ eine Reihenentwicklung:
+\[
+f(z)=\sum_{n=0}^{\infty}\frac{f^{(n)}(z_0)}{n!}(z-z_0)^n\qquad\forall z\in B(z_0,R_0).
+\]
+\[
+\Leftrightarrow \text{Taylorreihe von }f.
+\]
+Für $|g(z)|<1$ gilt die geometrische Reihe
+\[
+\frac{1}{1-g(z)}=\sum_{n=0}^{\infty}g(z)^n.
+\]
+
+Sei $f$ holomorph auf einem Kreisring $R_1<|z-z_0|<R_2$. Dann
+\[
+f(z)=\sum_{n=0}^{\infty}a_n(z-z_0)^n+\sum_{n=1}^{\infty}b_n\frac{1}{(z-z_0)^n}
+\equiv \sum_{n=-\infty}^{\infty}c_n(z-z_0)^n,
+\]
+\[
+a_n=\frac{1}{2\pi\ii}\int_\gamma\frac{f(z)}{(z-z_0)^{n+1}}\dd z\quad\forall n=0,1,\ldots,
+\]
+\[
+b_n=\frac{1}{2\pi\ii}\int_\gamma\frac{f(z)}{(z-z_0)^{-n+1}}\dd z\quad\forall n=1,\ldots,
+\]
+\[
+c_n=\frac{1}{2\pi\ii}\int_\gamma\frac{f(z)}{(z-z_0)^{n+1}}\dd z\quad\forall n=0,\pm1,\ldots.
+\]
+
+\subsection*{Isolierte Singularitäten}
+$\exists\varepsilon$: $f$ holomorph für alle $z\in B(z_0,\varepsilon)\setminus\{z_0\}$.
+\[
+\Leftrightarrow \text{isolierte Singularität in }z_0.
+\]
+
+\subsection*{Charakterisierung von Singularitäten}
+\begin{itemize}
+\item Wesentlich: $c_n\ne0$ für unendlich viele negative $n$.
+\item Pol einer Ordnung $m$: $m\ge1$, falls $c_{-m}\ne0$ und $c_n=0$ für alle $n<-m$; einfacher Pol, falls $m=1$.
+\item Hebbar: $c_n=0$ für alle $n<0$.
+\item Nullstelle einer Ordnung $m$: $m\ge1$, falls $c_m\ne0$ und $c_n=0$ für alle $n<m$.
+\end{itemize}
+
+\subsection*{Residuensatz}
+Sei $U$ wegzusammenhängend und offen und
+\[
+f:U\setminus\{z_1,\ldots,z_n\}\to\C
+\]
+holomorph. Dann
+\[
+\int_\gamma f(z)\dd z=2\pi\ii\sum_{k=1}^{n}W(\gamma,z_k)\Res(f,z_k),
+\]
+\[
+\text{wobei }\Res(f,z_k)=c_{-1},\qquad f=\sum_{n=-\infty}^{\infty}c_n(z-z_k)^n.
+\]
+\[
+\Rightarrow c_{-1}=\frac{1}{2\pi\ii}\int_\gamma f(\xi)\dd\xi.
+\]
+Also ist $c_{-1}$ der Koeffizient von $\frac{1}{z-z_k}$; $W(\gamma,z_k)$ gibt die Orientierung und Vielfachheit der geschlossenen Kurven.
+Für $f(z)=\dfrac{p(z)}{q(z)}$ und eine einfache Nullstelle $z_0$ von $q$ gilt
+\[
+\Res\left(\frac{p}{q},z_0\right)=\frac{p(z_0)}{q'(z_0)}.
+\]
+
+\subsection*{Lemma}
+$z_0$ ist eine isolierte Singularität der Ordnung $m$
+\[
+\Leftrightarrow\exists\varphi\text{ holomorph bei }z_0,\quad \varphi(z_0)\ne0:
+\]
+\[
+f(z)=\frac{\varphi(z)}{(z-z_0)^m}.
+\]
+\[
+\begin{gathered}
+\Rightarrow \Res(f,z_0)=\frac{\varphi^{(m-1)}(z_0)}{(m-1)!},\\
+\text{für }m=1:\quad \Res(f,z_0)=\lim_{z\to z_0}(z-z_0)f(z).
+\end{gathered}
+\]
+
+\subsection*{Satz von Picard}
+Sei $z_0$ eine wesentliche Singularität. Für jedes $\varepsilon>0$ nimmt $f$ auf $B(z_0,\varepsilon)\setminus\{z_0\}$ alle endlichen Werte außer vielleicht einem unendlich oft an.
+
+\subsection*{Lemma}
+Sei $f$ holomorph bei $z_0$. $f$ hat eine Nullstelle bei $z_0$ der Ordnung $m$
+\[
+\Leftrightarrow \exists g\text{ holomorph}:\qquad f(z)=g(z)(z-z_0)^m,\quad g(z_0)\ne0.
+\]
+
+\subsection*{Lemma}
+Sei $f:B(z_0,\varepsilon)\to\C$ holomorph und $f(z_0)=0$.
+\[
+\Rightarrow \text{Entweder ist } f(z)=0\text{ oder }z_0\text{ ist eine isolierte Nullstelle von }f.
+\]
+Sei $f:U\to\C$ holomorph und $U$ wegzusammenhängend. Falls $f(z)=0$ auf einer Menge mit Häufungspunkt in $U$,
+ist $f(z)=0$ auf $U$.
+
+\subsection*{Identitätssatz / Korollar}
+Sei $U$ offen und zusammenhängend und $f,g:U\to\C$ holomorph. Falls $f(z)=g(z)$ auf einer Menge mit Häufungspunkt in $U$
+(insb. auf einer offenen Menge oder Kurvenstrecke), gilt $f\equiv g$ auf $U$.
+\[
+\begin{gathered}
+f=0\text{ auf Geradenstück/offener Menge}\Rightarrow f\equiv0\text{ auf }U,\\
+f=g\text{ auf Geradenstück/offener Menge}\Rightarrow f\equiv g\text{ auf }U.
+\end{gathered}
+\]
+
+\subsection*{Cauchy-Hauptwert}
+\[
+\PV\int_{-\infty}^{\infty}f(z)\dd z=\lim_{R\to\infty}\int_{-R}^{R}f(z)\dd z.
+\]
+Sei $\displaystyle\int_{-\infty}^{\infty}F(x)\dd x$ gegeben. Falls
+\[
+\lim_{R\to\infty}\int_{\gamma_R} f(z)\dd z=0,
+\]
+gilt
+\[
+\lim_{R\to\infty}\int_{-R}^{R}f(z)\dd z=2\pi\ii\sum_{j=1}^{n}\Res(f,z_j),
+\]
+wobei $\gamma_R$ der obere Halbkreis und $\overline{\gamma_R}$ der untere Halbkreis ist.
+
+Sei $\gamma_R=R\ee^{\ii t}$, $t\in[0,\pi]$, $p,q$ Polynome mit:
+\begin{enumerate}
+\item $\deg(p)\le \deg(q)-2$,
+\item $q(x)$ keine Nullstellen auf der $x$-Achse.
+\end{enumerate}
+Sei
+\[
+f(z)=\frac{p(z)}{q(z)}h(z),\qquad h(z)\text{ auf }\operatorname{Im}z\ge0\text{ beschränkt}.
+\]
+Dann
+\[
+\Rightarrow \lim_{R\to\infty}\int_{\gamma_R}f(z)\dd z=0,
+\qquad \PV I=I\text{, falls }f\text{ gerade}.
+\]
+
+\subsection*{Eigentliche Integrale mit $\sin$ und $\cos$}
+Sei $\displaystyle\int_0^{2\pi}F(\cos t,\sin t)\dd t$ gegeben. Es gilt
+\[
+\cos(t)=\frac{\ee^{\ii t}+\ee^{-\ii t}}{2},\qquad
+\sin(t)=\frac{\ee^{\ii t}-\ee^{-\ii t}}{2\ii}.
+\]
+Wir nehmen $\gamma(t)=\ee^{\ii t}$, $t\in[0,2\pi]$, $\gamma'(t)=\ii\ee^{\ii t}$, $z=\ee^{\ii t}$:
+\[
+\Rightarrow \int_0^{2\pi}F(\cos t,\sin t)\dd t
+=\int_\gamma F\left(\frac{z+z^{-1}}{2},\frac{z-z^{-1}}{2\ii}\right)\frac{\dd z}{\ii z}.
+\]
+Als nützliche Kontrolle gilt für $a>|b|$:
+\[
+\int_0^{2\pi}\frac{\dd t}{a+b\cos t}
+=\frac{2\pi}{\sqrt{a^2-b^2}},
+\qquad
+\int_0^{2\pi}\frac{\dd t}{a+b\sin t}
+=\frac{2\pi}{\sqrt{a^2-b^2}}.
+\]
+
+\subsection*{Uneigentliche Integrale mit $\sin$ und $\cos$}
+Sei $\displaystyle\int_{-\infty}^{\infty}g(t)\cos(bt)\dd t$ oder $\displaystyle\int_{-\infty}^{\infty}g(t)\sin(bt)\dd t$ gegeben.
+\[
+\Rightarrow \operatorname{Re}\left(\int_{-\infty}^{\infty}g(t)\ee^{\ii bt}\dd t\right)
+=\int_{-\infty}^{\infty}g(t)\cos(bt)\dd t,
+\]
+\[
+\Rightarrow \operatorname{Im}\left(\int_{-\infty}^{\infty}g(t)\ee^{\ii bt}\dd t\right)
+=\int_{-\infty}^{\infty}g(t)\sin(bt)\dd t.
+\]
+
+\subsection*{Lemma: Einrückung am Pol}
+Sei $f$ holomorph auf $B(x_0,R)\setminus\{x_0\}$, $x_0\in\R$, $R>0$, $x_0$ einfacher Pol von $f$, $\varepsilon<R$.
+\begin{center}
+\begin{tikzpicture}[scale=.58]
+  \draw (-3.4,0)--(3.4,0);
+  \foreach \x/\lab in {-3/{x_0-R},-1.25/{x_0-\varepsilon},0/{x_0},1.25/{x_0+\varepsilon},3/{x_0+R}}
+    \draw (\x,.08)--(\x,-.08) node[below=3pt] {\scriptsize $\lab$};
+  \draw[->,thick] (1.25,0) arc (0:180:1.25);
+  \node at (0,1.48) {\scriptsize $\gamma_\varepsilon$ von rechts nach links};
+\end{tikzpicture}
+\end{center}
+\[
+\Rightarrow \lim_{\varepsilon\to0}\int_{\gamma_\varepsilon}f(z)\dd z=\pi\ii\Res(f,x_0).
+\]
+
+\subsection*{Fundamentalperiode}
+Kleinste positive Periode $p>0$:
+\[
+f(t+p)=f(t)\qquad \forall t\in\R,\qquad f:\R\to\C.
+\]
+
+\subsection*{Trigonometrisches Polynom/Fourier-Reihe}
+\[
+f(t)\sim \frac{a_0}{2}+\sum_{n=1}^{\infty}\left(a_n\cos\left(\frac{n\pi}{L}t\right)+b_n\sin\left(\frac{n\pi}{L}t\right)\right),
+\]
+oder
+\[
+f(t)\sim\sum_{n=-\infty}^{\infty}c_n\ee^{\ii n\pi t/L}
+\]
+für eine $2L$-periodische Funktion.
+\[
+a_m=\frac1L\int_{-L}^{L}f(t)\cos\left(\frac{m\pi}{L}t\right)\dd t,\qquad m\ge0,
+\]
+\[
+b_m=\frac1L\int_{-L}^{L}f(t)\sin\left(\frac{m\pi}{L}t\right)\dd t,\qquad m>0,
+\]
+\[
+c_m=\frac1{2L}\int_{-L}^{L}f(t)\ee^{-\ii m\pi t/L}\dd t,\qquad m\in\Z.
+\]
+\[
+\begin{gathered}
+\omega=\frac{2\pi}{T}=\frac{\pi}{L}\quad(2L=T),\\
+\frac{a_0}{2}=\frac1{2L}\int_{-L}^{L}f(t)\dd t:
+\text{ Mittelwert von }f.
+\end{gathered}
+\]
+\[
+\Rightarrow c_n=\frac12(a_n-\ii b_n),\qquad c_{-n}=\frac12(a_n+\ii b_n),
+\]
+\[
+\Rightarrow a_n=c_n+c_{-n},\qquad b_n=\ii(c_n-c_{-n}).
+\]
+
+\subsection*{Lemma: Orthogonalität}
+\[
+\frac1{2L}\int_{-L}^{L}\ee^{\ii\pi n t/L}\ee^{-\ii\pi m t/L}\dd t=
+\begin{cases}1,&n=m,\\0,&n\ne m,
+\end{cases}
+\]
+\[
+\int_{-L}^{L}\cos\left(\frac{\pi n}{L}t\right)\cos\left(\frac{\pi m}{L}t\right)\dd t=
+\begin{cases}0,&n\ne m,\\L,&n=m\ne0,\\2L,&n=m=0,
+\end{cases}
+\]
+\[
+\int_{-L}^{L}\sin\left(\frac{\pi n}{L}t\right)\sin\left(\frac{\pi m}{L}t\right)\dd t=
+\begin{cases}0,&n\ne m\text{ oder }n=m=0,\\L,&n=m\ne0,
+\end{cases}
+\]
+\[
+\int_{-L}^{L}\cos\left(\frac{n\pi}{L}t\right)\sin\left(\frac{m\pi}{L}t\right)\dd t=0\qquad\forall n,m.
+\]
+
+\subsection*{Skalar und Norm}
+\[
+\langle f,g\rangle=\frac1{2L}\int_{-L}^{L}f(t)\overline{g(t)}\dd t,
+\]
+\[
+\|f\|=\sqrt{\langle f,f\rangle}=\left(\frac1{2L}\int_{-L}^{L}|f(t)|^2\dd t\right)^{1/2},
+\]
+wobei $f,g$ $2L$-periodisch sind.
+
+\subsection*{Gerade/ungerade}
+Gerade, falls $f(t)=f(-t)$; ungerade, falls $-f(t)=f(-t)$.
+
+Falls gerade:
+\[
+b_n=0\quad(n>0),\qquad a_n=\frac2L\int_0^L f(t)\cos\left(\frac{n\pi}{L}t\right)\dd t.
+\]
+Falls ungerade:
+\[
+a_n=0,\\
+b_n=\frac2L\int_0^L f(t)\sin\left(\frac{n\pi}{L}t\right)\dd t\quad(n\ge1).
+\]
+
+\subsection*{Sprungstellen von Fourierreihen}
+Für eine Sprungstelle bei $t_0$ gilt:
+\[
+\frac{a_0}{2}+\sum_{k=1}^{\infty}\left(a_k\cos\left(\frac{k\pi}{L}t_0\right)+b_k\sin\left(\frac{k\pi}{L}t_0\right)\right)
+\]
+\[
+=\frac12\left(\lim_{t\to t_0^-}f(t)+\lim_{t\to t_0^+}f(t)\right).
+\]
+
+\subsection*{Gibbs'sches Phänomen}
+\[
+s_N(t)=\sum_{n=-N}^{N}c_n\ee^{\ii n\pi t/L}.
+\]
+\[
+J=f(t_0^+)-f(t_0^-),\qquad \text{Überschwingen}\approx 0{,}08949\,|J|\approx0{,}18\cdot\frac{|J|}{2}.
+\]
+\[
+\Rightarrow \text{keine gleichmäßige Konvergenz bei Sprungstellen}.
+\]
+
+\subsection*{Parseval'sche Identität}
+\[
+\sum_{n=-\infty}^{\infty}|c_n|^2=\frac1{2\pi}\int_{-\pi}^{\pi}|f(t)|^2\dd t,
+\]
+wenn $f$ $2\pi$-periodisch ist.
+\[
+\Rightarrow \frac{a_0^2}{2}+\sum_{n=1}^{\infty}(a_n^2+b_n^2)=\frac1\pi\int_{-\pi}^{\pi}|f(t)|^2\dd t.
+\]
+
+\subsection*{Absolut integrierbar}
+\[
+\int_{-\infty}^{\infty}|f(t)|\dd t<\infty.
+\]
+
+\subsection*{Fourier-Transformation}
+Sei $f:\R\to\C$ absolut integrierbar $\Rightarrow \hat f:\R\to\C$.
+\[
+\hat f(\omega)=\frac1{\sqrt{2\pi}}\int_{-\infty}^{\infty}f(t)\ee^{-\ii\omega t}\dd t
+\]
+und invers:
+\[
+f(t)=F^{-1}(\hat f)(t)=\frac1{\sqrt{2\pi}}\int_{-\infty}^{\infty}\hat f(\omega)\ee^{\ii\omega t}\dd\omega.
+\]
+\begin{enumerate}[label=(\roman*)]
+\item
+\[
+\widehat{f(t-a)}(\omega)=\ee^{-\ii\omega a}\hat f(\omega),
+\qquad \widehat{\ee^{\ii at}f(t)}(\omega)=\hat f(\omega-a).
+\]
+\item
+\[
+\widehat{f(at)}(\omega)=\frac1{|a|}\hat f\left(\frac{\omega}{a}\right),
+\qquad \widehat{\hat f}(t)=f(-t).
+\]
+Allgemeiner gilt für $a\ne0$:
+\[
+F[f(at-b)](\omega)=\frac1{|a|}\ee^{-\ii\omega b/a}\hat f\left(\frac{\omega}{a}\right).
+\]
+\item
+\[
+\widehat{f^{(n)}}(\omega)=(\ii\omega)^n\hat f(\omega),
+\qquad \widehat{t^n f(t)}(\omega)=\ii^n\frac{\dd^n}{\dd\omega^n}\hat f(\omega).
+\]
+\end{enumerate}
+Beispiel: Für $a>0$ und $f(t)=\ee^{-at}H(t)$, also $f(t)=\ee^{-at}$ für $t\ge0$ und $0$ sonst,
+\[
+\hat f(\omega)=\frac1{\sqrt{2\pi}}\frac{1}{a+\ii\omega}.
+\]
+
+\subsection*{Faltungsprodukt}
+\[
+f*g(x)=\int_{-\infty}^{\infty}f(x-t)g(t)\dd t
+=\int_{-\infty}^{\infty}f(t)g(x-t)\dd t.
+\]
+Für $a>0$ und $H$ als Heaviside-Funktion:
+\[
+\bigl((\ee^{-a\,\cdot}H)*H\bigr)(t)=\frac{1-\ee^{-at}}{a}\,H(t).
+\]
+\begin{enumerate}[label=(\roman*)]
+\item $f*g=g*f$, assoziativ, distributiv.
+\item $f(x-a)*g=(f*g)(x-a)$.
+\item
+\[
+\begin{gathered}
+F(f*g)=\sqrt{2\pi}\,F(f)\cdot F(g),\\
+F^{-1}(f*g)=\sqrt{2\pi}\,F^{-1}(f)\cdot F^{-1}(g).
+\end{gathered}
+\]
+\item
+\[
+\begin{gathered}
+F(f\cdot g)=\frac1{\sqrt{2\pi}}F(f)*F(g),\\
+F^{-1}(f\cdot g)=\frac1{\sqrt{2\pi}}F^{-1}(f)*F^{-1}(g).
+\end{gathered}
+\]
+\end{enumerate}
+
+\subsection*{Satz von Plancherel}
+\[
+\int_{-\infty}^{\infty}|f(t)|^2\dd t=\int_{-\infty}^{\infty}|\hat f(\omega)|^2\dd\omega.
+\]
+
+\subsection*{Laplace-Transformation}
+\[
+\mathcal L[f](s)=\int_0^{\infty}\ee^{-st}f(t)\dd t,\qquad f:\R\to\C.
+\]
+Es muss gelten: $\exists\sigma_0\in\R$, $M>0$:
+\[
+|f(t)|\le M\ee^{\sigma_0 t}\quad(t>0),
+\qquad f(t<0)=0.
+\]
+Dann konvergiert $\mathcal L[f](s)$ für $\operatorname{Re}(s)>\sigma_0$.
+
+\begin{enumerate}[label=(\roman*)]
+\item
+\[
+\begin{aligned}
+\mathcal L[f(t-a)H(t-a)](s)&=\ee^{-as}\mathcal L[f](s)\quad(a>0),\\
+\mathcal L[\ee^{at}f(t)](s)&=\mathcal L[f](s-a).
+\end{aligned}
+\]
+\item
+\[
+\mathcal L[f(at)](s)=\frac1a\mathcal L[f]\left(\frac{s}{a}\right)\qquad(a>0).
+\]
+\item
+\[
+\mathcal L[f^{(n)}](s)=s^n\mathcal L[f](s)-s^{n-1}f(0)-s^{n-2}f'(0)-\cdots-f^{(n-1)}(0).
+\]
+\item
+\[
+\frac{\dd^n}{\dd s^n}\bigl(\mathcal L[f](s)\bigr)=(-1)^n\mathcal L[t^n f(t)](s),\qquad n=0,1,\ldots.
+\]
+\item
+\[
+\mathcal L\left[\int_0^t f(\tau)\dd\tau\right](s)=\frac1s\mathcal L[f](s),
+\]
+\[
+\mathcal L\left[\frac{f(t)}{t}\right](x+\ii y)=\int_{x+\ii y}^{\infty+\ii y}\mathcal L[f](r)\dd r.
+\]
+\item
+\[
+\mathcal L[f](s)=\frac{1}{1-\ee^{-sT}}\int_0^T \ee^{-st}f(t)\dd t,\qquad \text{falls }f\ T\text{-periodisch}.
+\]
+\item
+\[
+(f*g)(t)=\int_0^t f(\tau)g(t-\tau)\dd\tau,
+\qquad \mathcal L[f*g]=\mathcal L[f]\cdot\mathcal L[g].
+\]
+\end{enumerate}
+
+\subsection*{Dirac-Delta-Funktion}
+\[
+\int_{-\infty}^{\infty}\delta(t)\dd t=1,
+\qquad H(t)=\int_{-\infty}^{t}\delta(s)\dd s,
+\]
+\[
+\mathcal L[\delta(t-a)](s)=\ee^{-as}.
+\]
+
+\subsection*{Satz von Lerch}
+\[
+\mathcal L[f_1]=\mathcal L[f_2]\Rightarrow f_1=f_2.
+\]
+
+\subsection*{Inverse Laplace-T.}
+\[
+f(t)=\frac1{2\pi\ii}\int_{c-\ii\infty}^{c+\ii\infty}\ee^{st}F(s)\dd s,
+\]
+\[
+c\text{ liegt rechts von allen Singularitäten von }F\text{ im Konvergenzbereich}.
+\]
+
+\subsection*{Laplace-Transformationen}
+\[
+\begin{alignedat}{2}
+1&\Rightarrow\frac1s,\qquad
+&t^n&\Rightarrow\frac{n!}{s^{n+1}},\\
+\ee^{at}&\Rightarrow\frac1{s-a},\qquad
+&t^n\ee^{at}&\Rightarrow\frac{n!}{(s-a)^{n+1}},\\[0.5mm]
+\sin(at)&\Rightarrow\frac{a}{s^2+a^2},\qquad
+&\cos(at)&\Rightarrow\frac{s}{s^2+a^2},\\
+\ee^{at}\sin(bt)&\Rightarrow\frac{b}{(s-a)^2+b^2},\qquad
+&\ee^{at}\cos(bt)&\Rightarrow\frac{s-a}{(s-a)^2+b^2}.
+\end{alignedat}
+\]
+
+\subsection*{Nützliches}
+\[
+\sin(z)=\sum_{i=0}^{\infty}\frac{(-1)^i}{(2i+1)!}z^{2i+1},
+\qquad \cos(z)=\sum_{i=0}^{\infty}\frac{(-1)^i}{(2i)!}z^{2i},
+\]
+\[
+\sinh(z)=\sum_{i=0}^{\infty}\frac{z^{2i+1}}{(2i+1)!},
+\qquad \cosh(z)=\sum_{i=0}^{\infty}\frac{z^{2i}}{(2i)!},
+\]
+\[
+\tanh z=z-\frac{z^3}{3}+\frac{2z^5}{15}-\cdots.
+\]
+\[
+\frac1{z+a}=\frac1{z_0+a}\cdot\frac1{1+\frac{z-z_0}{z_0+a}},
+\qquad |z-z_0|<|z_0+a|.
+\]
+
+\subsection*{Partialbruchzerlegung}
+Für $a\ne b$ gilt
+\[
+\frac{1}{(z-a)(z-b)}=\frac{1}{a-b}\frac{1}{z-a}+\frac{1}{b-a}\frac{1}{z-b}.
+\]
+Für einen Pol $a$ der Ordnung $m$:
+\[
+\frac{p(x)}{q(x)}=\cdots+\frac{A_1}{x-a}+\frac{A_2}{(x-a)^2}+\cdots+\frac{A_m}{(x-a)^m}+\cdots .
+\]
+\[
+A_k=\frac{1}{(m-k)!}\lim_{x\to a}\frac{\dd^{m-k}}{\dd x^{m-k}}
+\left[(x-a)^m\frac{p(x)}{q(x)}\right],\qquad k=1,\ldots,m.
+\]
+Für irreduzible quadratische Faktoren:
+\[
+\frac{1}{(x^2+px+q)^m}=\frac{B_1x+C_1}{x^2+px+q}+\cdots+\frac{B_mx+C_m}{(x^2+px+q)^m}.
+\]
+
+\subsection*{Kochrezepte}
+\themenzeile{Trigonometrische Integrale $\int_0^{2\pi}F(\cos t,\sin t)\dd t$.}
+\textbf{Bsp.:} $I=\int_0^{2\pi}\frac{\dd t}{5-4\cos t}$.\\[-0.2mm]
+\KR{I} Substitution:
+\[
+\begin{gathered}
+z=\ee^{\ii t},\quad \dd z=\ii z\dd t,\quad \gamma:|z|=1,\\[-0.5mm]
+\cos t=\frac12(z+z^{-1}),\quad \sin t=\frac1{2\ii}(z-z^{-1}).
+\end{gathered}
+\]
+\[
+I=\int_\gamma \frac1{5-4\frac{z+z^{-1}}2}\frac{\dd z}{\ii z}
+ =\int_\gamma \frac{\dd z}{-2\ii z^2+5\ii z-2\ii}=\int_\gamma f(z)\dd z.
+\]
+\KR{II} Singularitäten in $\gamma$: $-2\ii z^2+5\ii z-2\ii=-2\ii(z-\frac12)(z-2)$, also $z_1=\frac12\in\gamma$, $z_2=2\notin\gamma$.\\[-0.2mm]
+\KR{III} Residuum:
+\[
+\Res(f,\tfrac12)=\lim_{z\to1/2}\frac{z-\frac12}{-2\ii(z-\frac12)(z-2)}=\frac1{-2\ii(\frac12-2)}=\frac1{3\ii}.
+\]
+\KR{IV} Residuensatz: $I=2\pi\ii\Res(f,\frac12)=\frac{2\pi}{3}$.\\[0.5mm]
+
+\themenzeile{Residuum aus Taylorreihe.}
+\textbf{Bsp.:} $\int_\gamma \ee^{1/z}\dd z$, $\gamma(t)=\ee^{2\pi\ii t}$.\\[-0.2mm]
+\KR{I} Taylor-/Laurentreihe:
+\[
+\ee^z=\sum_{n=0}^\infty\frac{z^n}{n!}\Rightarrow
+\ee^{1/z}=\sum_{n=0}^\infty\frac{z^{-n}}{n!}=1+\frac1z+\frac1{2z^2}+\cdots .
+\]
+\KR{II} $c_{-1}$ ablesen:
+\[
+c_{-1}=\frac1{2\pi\ii}\int_\gamma \ee^{1/z}\dd z=1
+\Rightarrow \int_\gamma \ee^{1/z}\dd z=2\pi\ii.
+\]
+
+\themenzeile{Uneigentliche Integrale mit $\ee^{\ii at}$.}
+\textbf{Bsp.:} $I=\int_{-\infty}^{\infty}\frac{\ee^{5\ii t}}{t^2-6t+13}\dd t$.\\[-0.2mm]
+\KR{I} Bedingungen prüfen:
+\[
+\begin{gathered}
+\deg q=2,\quad \deg p=0,\quad
+t^2-6t+13=(t-3-2\ii)(t-3+2\ii),\\
+|\ee^{5\ii z}|=\ee^{-5\operatorname{Im}z}\le1\text{ oben}.
+\end{gathered}
+\]
+\KR{II} Pole in der oberen Halbebene: $t_1=3+2\ii$; für $a>0$ obere Halbebene wählen.\\[-0.2mm]
+\KR{III} Residuum:
+\[
+\begin{aligned}
+\Res(f,t_1)
+&=\lim_{z\to3+2\ii}(z-3-2\ii)
+\frac{\ee^{5\ii z}}{(z-3-2\ii)(z-3+2\ii)}\\
+&=\frac{\ee^{5\ii(3+2\ii)}}{4\ii}
+=\frac{\ee^{-10+15\ii}}{4\ii}.
+\end{aligned}
+\]
+\KR{IV} Residuensatz:
+\[
+I=2\pi\ii\frac{\ee^{-10+15\ii}}{4\ii}
+=\frac\pi2\ee^{-10}\bigl(\cos(15)+\ii\sin(15)\bigr).
+\]
+
+\themenzeile{Komplizierte Kurven/Windungszahlen.}
+\textbf{Bsp.:} $\int_\gamma \frac{\dd z}{z^2-2z}$.\\[-0.2mm]
+\KR{I} Singularitäten und Ordnung: $f(z)=\frac1{z(z-2)}$ hat einfache Pole bei $0$ und $2$.\\[-0.2mm]
+\KR{II} Windungszahlen: $W(\gamma,0)=2$, $W(\gamma,2)=1$.\\[-0.2mm]
+\KR{III} Residuen:
+\[
+\Res(f,0)=\lim_{z\to0}\frac{z}{z(z-2)}=-\frac12,
+\qquad
+\Res(f,2)=\lim_{z\to2}\frac{z-2}{z(z-2)}=\frac12.
+\]
+\KR{IV} Alles in den Residuensatz einsetzen:
+\[
+\int_\gamma\frac{\dd z}{z^2-2z}=2\pi\ii\left(2\cdot\left(-\frac12\right)+1\cdot\frac12\right)=-\pi\ii.
+\]
+\textcolor{purple}{Fall 2:} Ist die Ordnung nicht sofort klar, schreibe an jeder Singularität eine Laurentreihe und lies $c_{-1}=\Res(f,z_j)$ ab. Allgemein: $f(z)=\frac{\varphi(z)}{(z-z_j)^m}$, $\varphi$ holomorph,
+\[
+\Res(f,z_j)=\frac{\varphi^{(m-1)}(z_j)}{(m-1)!}.
+\]
+\textbf{Bsp. höherer Pol:} $\gamma(t)=3\ee^{2\pi\ii t}$,
+\[
+\int_\gamma\frac{\ee^{3z}}{(z-1)^2}\dd z
+=\frac{2\pi\ii}{1!}(\ee^{3z})'\big|_{z=1}
+=2\pi\ii\cdot3\ee^3=6\pi\ii\ee^3.
+\]
+
+\themenzeile{Laurentreihe im Gebiet.}
+\textbf{Bsp.:} $f(z)=\frac1{(z-1)(z-4)}$ mit Gebieten
+I: $|z|<1$, II: $1<|z|<4$, III: $|z|>4$; gesucht ist Gebiet II.\\[-0.2mm]
+\KR{I} Partialbruchzerlegung:
+\[
+\begin{aligned}
+\frac1{(z-a)(z-b)}
+&=\frac1{a-b}\frac1{z-a}+\frac1{b-a}\frac1{z-b},\\
+\frac1{(z-1)(z-4)}
+&=-\frac13\frac1{z-1}+\frac13\frac1{z-4}.
+\end{aligned}
+\]
+\KR{II} Terme passend zum Gebiet als geometrische Reihen:
+\[
+\frac1{z-1}=\frac1z\frac1{1-1/z}=\sum_{n=0}^\infty z^{-n-1}\quad(|z|>1),
+\]
+\[
+\frac1{z-4}=-\frac14\frac1{1-z/4}=-\sum_{n=0}^\infty\frac{z^n}{4^{n+1}}\quad(|z|<4).
+\]
+\KR{III} Zusammenfassen:
+\[
+f(z)=-\frac13\sum_{n=0}^\infty z^{-n-1}-\frac13\sum_{n=0}^\infty\frac{z^n}{4^{n+1}}
+=\sum_{n=0}^\infty\left(-\frac13z^{-n-1}-\frac13\frac{z^n}{4^{n+1}}\right).
+\]
+
+\themenzeile{Laplace bei DGL.}
+\textbf{Bsp.:} $f'(t)+3f(t)=3\cos t$, $f(0)=3$.\\[-0.2mm]
+Benutze $\mathcal L[f']=s\mathcal L[f]-f(0)$, $\mathcal L[\cos(at)]=\frac{s}{s^2+a^2}$, $\mathcal L[\sin(at)]=\frac{a}{s^2+a^2}$, $\mathcal L[\ee^{at}]=\frac1{s-a}$.\\[-0.2mm]
+\KR{I} Gleichung transformieren:
+\[
+\begin{aligned}
+sL[f]-3+3L[f]&=3\frac{s}{s^2+1},\\
+L[f]&=\frac1{s+3}\left(3\frac{s}{s^2+1}+3\right)\\
+&=\frac{3s}{(s+3)(s^2+1)}+\frac3{s+3}.
+\end{aligned}
+\]
+\KR{II} Partialbruchzerlegung:
+\[
+\frac{s}{(s+3)(s^2+1)}=\frac{A}{s+3}+\frac{Bs+C}{s^2+1},
+\]
+\[
+A+B=0,\quad A+3C=0,\quad C+3B=1
+\Rightarrow B=\frac3{10},\ A=-\frac3{10},\ C=\frac1{10}.
+\]
+\[
+\frac{s}{(s+3)(s^2+1)}=-\frac3{10}\frac1{s+3}+\frac{\frac3{10}s+\frac1{10}}{s^2+1}.
+\]
+Also
+\[
+L[f]=\frac{21}{10}\frac1{s+3}+\frac9{10}\frac{s}{s^2+1}+\frac3{10}\frac1{s^2+1}.
+\]
+\KR{III} Rücktransformation:
+\[
+f(t)=\frac{21}{10}\ee^{-3t}+\frac9{10}\cos t+\frac3{10}\sin t.
+\]
+
+\end{multicols*}
+\end{document}
